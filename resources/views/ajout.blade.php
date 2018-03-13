@@ -16,8 +16,20 @@
                         <input type="text" placeholder="Type du materiel" name="type" required>
                     </fieldset>
                     <fieldset>
-                        <input type="datetime-local" name="date">
+                        <select required>
+                            <option>Bon</option>
+                            <option>Usé</option>
+                            <option>Cassé</option>
+                        </select>
                     </fieldset>
+                    <br/>
+                    <fieldset>
+                        <p>Le materiel est il fonctionnel ?</p>
+                        <input type="radio" name="valide" >OUI
+                        <br/>
+                        <input type="radio" name="valide" >NON
+                    </fieldset>
+                    <br/>
                     <fieldset>
                         <button name="submit" type="submit" data-submit="...Sending"> Envoyer </button>
                     </fieldset>

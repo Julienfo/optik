@@ -26,4 +26,9 @@ class HomeController extends Controller
     {
         return view('ajout');
     }
+
+    public function home()
+    {
+        return view('home');
+    }
 }
