@@ -19,5 +19,7 @@
             </div>
         </div>
     </div>
+
+    <a href="/ajout">Page ajout de materiel</a><br/>
 </div>
 @endsection
