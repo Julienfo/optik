@@ -21,5 +21,6 @@
     </div>
 
     <a href="/ajout">Page ajout de materiel</a><br/>
+    <a href="/liste">Liste du materiel</a><br/>
 </div>
 @endsection

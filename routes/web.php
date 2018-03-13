@@ -18,5 +18,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/ajout', 'HomeController@ajout')->name('ajout');
+Route::get('/home', 'HomeController@home');
+Route::get('/ajout', 'HomeController@ajout');
+Route::get('/liste', 'HomeController@liste');
