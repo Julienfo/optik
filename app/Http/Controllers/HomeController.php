@@ -63,4 +63,11 @@ class HomeController extends Controller
         return redirect('/home');
 
     }
+
+    public function trier()
+    {
+
+        return redirect('/liste');
+
+    }
 }

@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@home');
 Route::get('/ajout', 'HomeController@ajout');
 Route::post('/ajout_materiel', 'HomeController@ajout_materiel')->middleware('auth');
 Route::get('/liste', 'HomeController@liste')->middleware('auth');
+Route::post('/trier', 'HomeController@trier')->middleware('auth');
+
