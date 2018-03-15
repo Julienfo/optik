@@ -3,7 +3,8 @@
 @section('content')
     <h1>Listing du materiel</h1>
     <br/>
-    <form action="/trier" method="post">
+    <form action="trier" method="post">
+        {{csrf_field()}}
         Trier par type:
         <select>
             <option value="Tous" selected>Tous les types</option>

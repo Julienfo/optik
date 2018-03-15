@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Materiel;
+use App\Type;
 
 class HomeController extends Controller
 {
@@ -62,6 +63,37 @@ class HomeController extends Controller
 
         return redirect('/home');
 
+    }
+
+    public function ajout_type(){
+
+        return view('ajout_type');
+    }
+
+    public function add_type(){
+
+        //Validation des champs
+
+        $data = ['nom_type' => request('new_type')];  //nom du champ input et la valeur
+        $rules = ['nom_type' => 'required'];  //nom du champ input a valider et la ou les regles
+        $message = ['*.required' => 'Veuillez remplir le champ type.'];
+
+
+        Validator::make($data, $rules, $message)->validate();
+
+        $types = Type::all('nom_type')->toArray();
+        $type = request('new_type');
+
+        if($types == $type){
+            return redirect('/ajout_type');
+        }else{
+
+            Type::create([
+                'nom_type' => $type,
+            ]);
+
+            return redirect('/ajout');
+        }
     }
 
     public function trier()

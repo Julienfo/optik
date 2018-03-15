@@ -19,8 +19,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@home');
-Route::get('/ajout', 'HomeController@ajout');
+Route::get('/ajout', 'HomeController@ajout')->middleware('auth');
 Route::post('/ajout_materiel', 'HomeController@ajout_materiel')->middleware('auth');
+Route::get('/ajout_type', 'HomeController@ajout_type')->middleware('auth');
+Route::post('/add_type', 'HomeController@add_type')->middleware('auth');
+
 Route::get('/liste', 'HomeController@liste')->middleware('auth');
 Route::post('/trier', 'HomeController@trier')->middleware('auth');
 
