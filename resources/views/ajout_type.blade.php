@@ -5,8 +5,8 @@
     <br/>
     <form action="add_type" method="post">
         {{csrf_field()}}
-        {!! $errors->first('*','<p class="error_message">:message</p>') !!}
         <input type="text" name="new_type" placeholder="Nouveau type"/>
+        {!! $errors->first('nom','<p class="error_message">:message</p>') !!}
         <input type="submit" name="send_type" value="Envoyer" />
     </form>
 @endsection
