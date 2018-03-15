@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['nom_type'];
+    protected $fillable = ['nom'];
     protected $table ="type";
 }

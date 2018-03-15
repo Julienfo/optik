@@ -19,7 +19,7 @@
     <li> NOM | REFERENCE | TYPE | QUALITE </li>
     @foreach($materiel as $m)
 
-        <li>{{$m->nom_mat}} | {{$m->reference_mat}} | {{$m->type_mat}} | {{$m->qualite}}</li>
+        <li>{{$m->nom}} | {{$m->reference}} | {{$m->type_mat}} | {{$m->qualite}}</li>
 
     @endforeach
 

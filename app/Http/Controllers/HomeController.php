@@ -46,16 +46,16 @@ class HomeController extends Controller
 
         //Validation des champs
 
-        $data = ['nom_mat' => request('nom'), 'reference_mat' => request('ref'), 'type_mat' => request('type'), 'qualite' => request('etat'), 'note' => request('note')];  //nom du champ input et la valeur
-        $rules = ['nom_mat' => 'required', 'reference_mat' => 'required', 'type_mat' => 'required', 'qualite' => 'required', 'note' => 'required'];  //nom du champ input a valider et la ou les regles
+        $data = ['nom' => request('nom'), 'reference' => request('ref'), 'type_mat' => request('type'), 'qualite' => request('etat'), 'note' => request('note')];  //nom du champ input et la valeur
+        $rules = ['nom' => 'required', 'reference' => 'required', 'type_mat' => 'required', 'qualite' => 'required', 'note' => 'required'];  //nom du champ input a valider et la ou les regles
         $message = ['*.required' => 'Veuillez remplir le(s) champ(s) manquant(s).'];
 
 
         Validator::make($data, $rules, $message)->validate();
 
         Materiel::create([
-            'nom_mat' => request('nom'),
-            'reference_mat' => request('ref'),
+            'nom' => request('nom'),
+            'reference' => request('ref'),
             'type_mat' => request('type'),
             'qualite' => request('etat'),
             'note' => request('note')
@@ -74,22 +74,22 @@ class HomeController extends Controller
 
         //Validation des champs
 
-        $data = ['nom_type' => request('new_type')];  //nom du champ input et la valeur
-        $rules = ['nom_type' => 'required'];  //nom du champ input a valider et la ou les regles
+        $data = ['nom' => request('new_type')];  //nom du champ input et la valeur
+        $rules = ['nom' => 'required'];  //nom du champ input a valider et la ou les regles
         $message = ['*.required' => 'Veuillez remplir le champ type.'];
 
 
         Validator::make($data, $rules, $message)->validate();
 
-        $types = Type::all('nom_type')->toArray();
         $type = request('new_type');
+        $types = Type::where('nom', $type); //recuperer les champs de la bdd where = input,  si egale alors return false
 
         if($types == $type){
             return redirect('/ajout_type');
         }else{
 
             Type::create([
-                'nom_type' => $type,
+                'nom' => $type,
             ]);
 
             return redirect('/ajout');
@@ -98,8 +98,6 @@ class HomeController extends Controller
 
     public function trier()
     {
-
         return redirect('/liste');
-
     }
 }
