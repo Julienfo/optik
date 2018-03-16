@@ -116,12 +116,12 @@ class HomeController extends Controller
     public function liste()
     {
         $type_select = request('type_select');
+        $types = Type::all();
         if($type_select == 'Tous' | $type_select == null){
             $materiel = Materiel::all();
         }else{
             $materiel = Materiel::where('type_mat', $type_select)->get();
         }
-        $types = Type::all();
         return view('liste', ['materiel' => $materiel], ['types' => $types]);
     }
 }

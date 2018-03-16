@@ -16,13 +16,13 @@
     </form>
     <br/><br/>
 
-    <li> NOM | REFERENCE | TYPE | QUALITE </li>
-
-
+    @if($materiel->count() == 0)
+        <p>Aucun materiel pour ce type.</p>
+    @else
+        <h3> NOM | REFERENCE | TYPE | QUALITE </h3>
         @foreach($materiel as $m)
-
-            <li>{{$m->nom}} | {{$m->reference}} | {{$m->type_mat}} | {{$m->qualite}}</li>
-
+            <p>{{$m->nom}} | {{$m->reference}} | {{$m->type_mat}} | {{$m->qualite}}</p>
         @endforeach
+    @endif
 
 @endsection
