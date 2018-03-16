@@ -3,24 +3,26 @@
 @section('content')
     <h1>Listing du materiel</h1>
     <br/>
-    <form action="trier" method="post">
-        {{csrf_field()}}
+    <form action="liste" method="get">
+
         Trier par type:
-        <select>
-            <option value="Tous" selected>Tous les types</option>
-            <option value="Caméra">Caméra</option>
-            <option value="Photo">Photo</option>
-            <option value="Micro">Micro</option>
+        <select name="type_select">
+            <option value="Tous">Tous les types</option>
+            @foreach($types as $type)
+                <option value="{{$type->nom}}">{{$type->nom}}</option>
+            @endforeach
         </select>
-        <input type="submit" name="style" value="Trier" />
+        <input type="submit" value="Trier" />
     </form>
     <br/><br/>
 
     <li> NOM | REFERENCE | TYPE | QUALITE </li>
-    @foreach($materiel as $m)
 
-        <li>{{$m->nom}} | {{$m->reference}} | {{$m->type_mat}} | {{$m->qualite}}</li>
 
-    @endforeach
+        @foreach($materiel as $m)
+
+            <li>{{$m->nom}} | {{$m->reference}} | {{$m->type_mat}} | {{$m->qualite}}</li>
+
+        @endforeach
 
 @endsection

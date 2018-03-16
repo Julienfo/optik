@@ -31,12 +31,6 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function liste()
-    {
-        $materiel = Materiel::all();
-        return view('liste', ['materiel' => $materiel]);
-    }
-
     public function ajout()
     {
         $types = Type::all();
@@ -119,8 +113,15 @@ class HomeController extends Controller
         }
     }
 
-    public function trier()
+    public function liste()
     {
-        return redirect('/liste');
+        $type_select = request('type_select');
+        if($type_select == 'Tous' | $type_select == null){
+            $materiel = Materiel::all();
+        }else{
+            $materiel = Materiel::where('type_mat', $type_select)->get();
+        }
+        $types = Type::all();
+        return view('liste', ['materiel' => $materiel], ['types' => $types]);
     }
 }

@@ -25,5 +25,4 @@ Route::get('/ajout_type', 'HomeController@ajout_type')->middleware('auth');
 Route::post('/add_type', 'HomeController@add_type')->middleware('auth');
 
 Route::get('/liste', 'HomeController@liste')->middleware('auth');
-Route::post('/trier', 'HomeController@trier')->middleware('auth');
 
