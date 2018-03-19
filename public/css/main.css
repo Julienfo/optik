@@ -1,0 +1,719 @@
+/* ==========================================================================
+  Loader pages ------> Don't Work
+   ========================================================================== 
+
+		#preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: #fff;
+	
+			z-index: 9999;
+		
+		}
+		
+		#status {
+			width: 20vw;
+			height: 50vh;
+			position: absolute;
+			top: 20%;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			text-align: center;
+			margin: 0 auto;
+			  padding: 5px 10px;
+
+		
+			background-image: url(../img/loader.gif);
+	
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		*/
+
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+	color: #222;
+	font-size: 1em;
+	line-height: 1.4;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+
+textarea {
+	resize: vertical;
+}
+
+.hidden {
+	display: none !important;
+}
+
+/*-----======== FIRST PAGE ------========*/
+
+/*--------- HEADER ---------*/
+
+.content {
+	background-image: url(../img/bg.png);
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header {
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	font-weight: 600;
+	font-family: 'Raleway';
+	display: grid;
+	grid-template-columns: 1fr 18vw 1fr;
+}
+
+.logo {
+	width: 80%;
+	margin-right: auto;
+	margin-left: 15%;
+}
+
+.logo_mmi {
+	width: 80%;
+	margin: auto;
+}
+
+.header div {
+	display: block;
+	margin: auto;
+	color: white;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	line-height: 20vh;
+}
+
+.nav_droite {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav_droite a {
+	color: white;
+	position: relative;
+	margin-left: 2vw;
+}
+
+.nav_gauche {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav_gauche a {
+	margin-right: 2vw;
+	position: relative;
+	color: white;
+}
+
+
+.nav_gauche a:after {
+	content: " ";
+	background-color: #fff;
+	position: absolute;
+	right: 0;
+	width: 0;
+	top: -25;
+	height: 1px;
+	bottom: -20px;
+	transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.nav_gauche a:hover:after {
+	left: 0%;
+	width: 100%;
+}
+
+.nav_droite a:after {
+	content: " ";
+	background-color: #fff;
+	position: absolute;
+	right: 0;
+	top: -25;
+	width: 0;
+	height: 1px;
+	bottom: -20px;
+	transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.nav_droite a:hover:after {
+	left: 0%;
+	width: 100%;
+}
+
+.title {
+	grid-template-columns: 1fr;
+	display: grid;
+	padding-top: 28vh;
+	margin: auto;
+	color: white;
+	text-align: center;
+	font-family: 'Raleway';
+}
+
+.title img {
+	width: 22%;
+
+}
+
+.title h3 {
+	margin-top: 80px;
+	line-height: 4vh;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.title h4 {
+	text-transform: uppercase;
+	font-size: 1em;
+}
+
+.carton,
+.form_swig {
+	margin-top: 10vh;
+	display: block;
+	width: 3vw;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+	animation: swing 1000ms infinite;
+}
+
+.carton:hover,
+.form_swig:hover,
+.admin_carton:hover {
+	cursor: pointer;
+}
+
+@keyframes swing {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+/*------======== SECOND PAGE ------========*/
+
+.content2_bg {
+	background-image: url(../img/bg2.png);
+	background-position: top;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+}
+
+.content2 {
+	padding-top: 23vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: 50px;
+	grid-gap: 15px;
+	width: 1400px;
+	margin: auto;
+}
+
+.content2 i {
+	color: white;
+
+}
+
+.content2 div {
+	position: relative;
+}
+
+.content2 span {
+	font-family: 'Raleway';
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	display: block;
+	margin: auto;
+	line-height: 3px;
+}
+
+.content2 h1 {
+	padding-top: 2.5%;
+	padding-left: 10px;
+	text-transform: uppercase;
+	color: white;
+	font-size: 14pt;
+}
+
+.content2 h4 {
+	padding-left: 10px;
+	color: white;
+	font-size: 0.8em;
+}
+
+.content2 div {
+	box-shadow: 0px 0px 67px -5px rgba(0, 0, 0, 0.75);
+}
+
+.content2 div:nth-child(1) {
+	margin-top: 190px;
+	margin-bottom: -250px;
+	grid-row: 3 / 7;
+	background-image: url("../img/img_grid/5.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+.content2 div:nth-child(1) span {
+	text-align: left;
+}
+
+.content2 div:nth-child(2) {
+	margin-top: 120px;
+	margin-bottom: -185px;
+	grid-row: 3 / 8;
+	background-image: url("../img/img_grid/1.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+.content2 div:nth-child(2) span {
+	text-align: center;
+}
+
+.content2 div:nth-child(3) {
+	margin-top: 190px;
+	margin-bottom: -250px;
+	grid-row: 3 / 7;
+	background-image: url("../img/img_grid/construct.png");
+	background-position: top;
+	background-size: 100%;
+}
+
+.content2 div:nth-child(3) span {
+	text-align: right;
+}
+
+.content2 div:nth-child(3) h1 {
+	padding-right: 10px;
+}
+
+.content2 div:nth-child(3) h4 {
+	padding-right: 10px;
+}
+
+.content2 div:nth-child(4) {
+	margin-top: -50px;
+	margin-bottom: -190px;
+	grid-row: 3 / 1;
+	background-image: url("../img/img_grid/4.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+.content2 div:nth-child(4) span {
+	text-align: left;
+}
+
+.content2 div:nth-child(5) {
+	margin-top: -50px;
+	margin-bottom: -119px;
+	grid-row: 3 / 1;
+	background-image: url("../img/img_grid/carton.jpg");
+	background-position: top;
+	background-size: 150%;
+}
+
+.content2 div:nth-child(5) span {
+	top: 0;
+	bottom: auto;
+	text-align: center;
+}
+
+.content2 div:nth-child(6) {
+	margin-top: -50px;
+	margin-bottom: -190px;
+	background-image: url("../img/img_grid/construct.png");
+	background-position: top;
+	background-size: cover;
+	grid-row: 3 / 1;
+}
+
+.content2 div:nth-child(6) span {
+	text-align: right;
+}
+
+.content2 div:nth-child(6) h1 {
+	padding-right: 10px;
+}
+
+.content2 div:nth-child(6) h4 {
+	padding-right: 10px;
+}
+
+.form_swig {
+	display: block;
+	margin-top: 230px;
+	width: 2.5vw;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+	animation: swing 1000ms infinite;
+}
+
+
+/*------======== THIRD PAGE ------========*/
+
+.content3_bg {
+	width: 100%;
+	height: 100vh;
+	background-image: url(../img/bg3.png);
+	background-position: top;
+	background-size: cover;
+}
+
+.content3 {
+	padding-top: 21vh;
+	text-align: center;
+}
+
+.mockup {
+	width: 1200px;
+}
+
+
+/*------======== AJOUTER DU MATERIEL ------========*/
+
+.content4_bg {
+	background-attachment: fixed;
+	background-image: url(../img/bg4.jpg);
+	background-position: top;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+
+}
+
+.content4 {
+	margin: auto;
+	text-transform: uppercase;
+	color: white;
+	font-size: 2.5em;
+	display: grid;
+	font-weight: 900;
+	font-family: 'Raleway';
+	grid-template-columns: 900px 1fr;
+	overflow: hidden;
+	text-align: center;
+}
+
+.txt-content4 {
+	width: 100%;
+}
+
+.txt-content4 span {
+	font-size: 0.8em;
+}
+
+.txt-content4 img {
+	padding: 3vh 0 3vh 0;
+	width: 11vw;
+	height: auto;
+}
+
+.acces a {
+	color: white;
+	font-size: 0.5em;
+}
+
+.screen {
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	width: 550px;
+	height: 550px;
+	background-position: top;
+	background-size: cover;
+	background-image: url(../img/ajouter_screen.png);
+}
+
+.screen-form {
+	top: 3.9vh;
+	left: 3vw;
+	position: absolute;
+	width: 505px;
+	height: 455px;
+	display: block;
+}
+
+.screen-form a {
+	padding-right: 25px;
+	padding-left: 25px;
+	font-size: 0.3em;
+	line-height: 70px;
+	color: dimgrey;
+	font-weight: 600;
+}
+
+.screen-form hr {
+	margin: 0 40px 30px 40px;
+}
+
+.screen-form h4 {
+	margin-bottom: -10px;
+	margin-left: 80px;
+	text-align: left;
+	font-size: 0.2em;
+	color: black;
+	padding: 0;
+}
+
+.screen-form h3 {
+	margin-top: 25px;
+	margin-left: 80px;
+	text-align: left;
+	font-size: 0.2em;
+	color: #a6d26e;
+	padding: 0;
+}
+
+.screen-form [type='text'] {
+	height: 24px;
+	border: solid 0.5px black;
+	margin-right: 225px;
+	text-align: left;
+	font-size: 0.3em;
+	padding: 0;
+	color: black;
+}
+
+.etat [type='checkbox'] {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+.screen-form h5 {
+	text-align: left;
+	font-size: 0.1em;
+	color: grey;
+	padding: 0;
+	display: inline;
+}
+
+.etat {
+	margin-top: -10px;
+	margin-left: 70px;
+	display: grid;
+	grid-template-columns: 70px 70px 70px;
+}
+
+.note {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+/*------======== PAGE ADMINISTRER DU MATERIEL ------========*/
+
+.administrer_header {
+	background-attachment: fixed;
+	background-image: url(../img/Admin_bg1.png);
+	background-position: top;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+}
+
+.header_administration {
+	z-index: 999;
+	width: 100%;
+	font-weight: 600;
+	font-family: 'Raleway';
+	display: grid;
+	grid-template-columns: 1fr 18vw 1fr;
+}
+
+.header_administration div {
+	display: block;
+	margin: auto;
+	color: white;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	line-height: 20vh;
+}
+
+.content_header_administration {
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	padding-top: 10vh;
+}
+
+.administration_title {
+	font-size: 4.2em;
+	font-weight: 800;
+	font-family: 'Raleway';
+}
+
+.administration_subtitle {
+	font-size: 6em;
+	font-weight: 800;
+	font-family: 'Raleway';
+	border-bottom: 3px solid #fff;
+}
+
+.admin_carton {
+	margin-top: 25vh;
+	display: block;
+	width: 3vw;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+	animation: swing 1000ms infinite;
+}
+
+/*------ PARTIE TABLEAU ADMINISTRER DU MATOS -========*/
+
+.administrer_list {
+	background-image: url(../img/Admin_bgall.png);
+	background-repeat: repeat;
+	background-size: cover;
+	width: 100%;
+	height: 2000px;
+}
+
+/*------ TABLEAU HEAD -========*/
+
+.administatrion_list_title {
+	display: grid;
+	grid-template-columns: 1fr 5fr 1fr;
+	font-weight: 500;
+	font-size: 1.3em;
+	font-family: 'Raleway';
+	color: #fff;
+	text-transform: uppercase;
+	padding-top: 50px;
+	padding-left: 50px;
+}
+
+.administatrion_list_title span {
+	padding-top: 10px;
+}
+
+
+.administatrion_list_title hr {
+	display: block;
+	font-weight: 500;
+	font-size: 1.3em;
+	font-family: 'Raleway';
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 4%;
+	margin-right: 10%;
+}
+
+.administatrion_list_title select {
+	display: block;
+	font-family: 'Raleway';
+	font-size: 0.8em;
+	background-image: url(../img/Admin_bgall.png);
+	margin-top: 20px;
+	border: none;
+	color: #fff;
+}
+
+
+/*------ TABLEAU ADMINISTRER -========*/
+
+.tableau {
+overflow-x:auto;
+}
+
+
+.admin_table {
+	border: 2px solid #fff;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.admin_table tbody tr {
+	border: 2px solid #fff;
+}
+
+.admin_tableau_ligne_pres td {
+	border: 2px solid #fff;
+	padding: 10px;
+}
+
+.admin_tableau_ligne_classique td {
+	border: 1px solid #fff;
+	padding: 20px 1% 10px 1%;
+}
+
+.admin_tableau_ligne_pres {
+	font-size: 1.3em;
+	font-weight: 800;
+	font-family: 'Raleway';
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.admin_tableau_ligne_classique {
+	font-size: 1em;
+	font-weight: 200;
+	font-family: 'Raleway';
+	color: #fff;
+}

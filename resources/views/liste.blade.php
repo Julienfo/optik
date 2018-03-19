@@ -12,7 +12,7 @@
                 <option value="{{$type->nom}}">{{$type->nom}}</option>
             @endforeach
         </select>
-        <input type="submit" value="Trier" />
+        <input type="submit" value="Trier"/>
     </form>
     <br/><br/>
 
