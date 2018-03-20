@@ -14,6 +14,8 @@
         </select>
         <input type="submit" value="Trier"/>
     </form>
+    <br/>
+    <a href="/ajout_type">Ajouter un type +</a>&nbsp;<a href="/supp_type">supprimer un type x</a>
     <br/><br/>
 
     @if($materiel->count() == 0)

@@ -45,24 +45,19 @@ class HomeController extends Controller
         $data = [
             'nom' => request('nom'),
             'reference' => request('ref'),
-            'type_mat' => request('type'),
-            'qualite' => request('etat'),
-            'note' => request('note')
+            'type_id' => request('type'),
         ];  //nom du champ input et la valeur
 
         $rules = [
             'nom' => 'required',
-            'reference' => 'required', 'type_mat' => 'required',
-            'qualite' => 'required',
-            'note' => 'required'
+            'reference' => 'required',
+            'type_id' => 'required',
         ];  //nom du champ input a valider et la ou les regles
 
         $message = [
             'nom.required' => 'Veuillez remplir le nom.',
             'reference.required' => 'Veuillez remplir la reference.',
-            'type_mat.required' => 'Veuillez remplir le type.',
-            'qualite.required' => 'Veuillez remplir l\'état du matériel.',
-            'note.required' => 'Veuillez remplir la fonction du matériel.'
+            'type_id.required' => 'Veuillez séléctionner le type.',
         ];
 
 
@@ -71,9 +66,8 @@ class HomeController extends Controller
         Materiel::create([
             'nom' => request('nom'),
             'reference' => request('ref'),
-            'type_mat' => request('type'),
-            'qualite' => request('etat'),
-            'note' => request('note')
+            'type_id' => request('type'),
+            'note' => request('note'),
         ]);
 
         return redirect('/home');
@@ -86,8 +80,6 @@ class HomeController extends Controller
     }
 
     public function add_type(){
-
-        $error_message = ''; //erreur si type existe deja
 
         //Validation des champs
 
@@ -112,6 +104,26 @@ class HomeController extends Controller
             return redirect('/ajout');
         }
     }
+
+    public function supp_type(){
+
+        $types = Type::all();
+        return view('supp_type', ['types' => $types]);
+    }
+
+    /*
+    public function remove_type($id){
+
+        $type = Type::find($id);
+        if ($type == false){
+            abort(404);
+        }else{
+            Type::where('id', $id)->delete();
+            return back();
+        }
+
+
+    }*/
 
     public function liste()
     {

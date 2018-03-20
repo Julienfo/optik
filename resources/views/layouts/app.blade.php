@@ -75,5 +75,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/Script-Ajout/ReturnToTheTop.js') }}"></script>
     <script src="{{ asset('js/Script-Ajout/scroll.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/supp_type.js') }}"></script>
 </body>
 </html>

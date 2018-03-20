@@ -24,5 +24,7 @@ Route::post('/ajout_materiel', 'HomeController@ajout_materiel')->middleware('aut
 Route::get('/ajout_type', 'HomeController@ajout_type')->middleware('auth');
 Route::post('/add_type', 'HomeController@add_type')->middleware('auth');
 
-Route::get('/liste', 'HomeController@liste')->middleware('auth');
+Route::get('/supp_type', 'HomeController@supp_type')->middleware('auth');
+/*Route::get('/remove_type/{id}', 'HomeController@remove_type')->where('id', '[0-9]+')->middleware('auth');*/
 
+Route::get('/liste', 'HomeController@liste')->middleware('auth');
