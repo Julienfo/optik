@@ -9,22 +9,25 @@ use App\Type;
 
 class HomeController extends Controller
 {
-    /**
+    /*/**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
-    /**
+    /*/**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
 
+    public function welcome(){
+        return view('welcome');
+    }
 
     public function home()
     {
@@ -50,18 +53,25 @@ class HomeController extends Controller
 
         $rules = [
             'nom' => 'required',
-            'reference' => 'required',
+            'reference' => 'required|unique:materiels,reference',
             'type_id' => 'required',
         ];  //nom du champ input a valider et la ou les regles
 
         $message = [
             'nom.required' => 'Veuillez remplir le nom.',
             'reference.required' => 'Veuillez remplir la reference.',
+            'reference.unique' => 'Cette reference existe déjà.',
             'type_id.required' => 'Veuillez séléctionner le type.',
         ];
 
 
         Validator::make($data, $rules, $message)->validate();
+
+        $ref_mat = Materiel::all('reference');
+
+        if($ref_mat == request('ref')){
+
+        }
 
         Materiel::create([
             'nom' => request('nom'),
@@ -70,7 +80,7 @@ class HomeController extends Controller
             'note' => request('note'),
         ]);
 
-        return redirect('/home');
+        return redirect('/ajout')->with('toastr', ['statut' => 'success', 'message' => 'Matériel ajouté.']);
 
     }
 
@@ -84,8 +94,11 @@ class HomeController extends Controller
         //Validation des champs
 
         $data = ['nom' => request('new_type')];  //nom du champ input et la valeur
-        $rules = ['nom' => 'required'];  //nom du champ input a valider et la ou les regles
-        $message = ['nom.required' => 'Veuillez remplir le champ type.'];
+        $rules = ['nom' => 'required|unique:type,nom'];  //nom du champ input a valider et la ou les regles
+        $message = [
+            'nom.required' => 'Veuillez remplir le champ type.',
+            'nom.unique' => 'Ce type existe déjà.',
+            ];
 
 
         Validator::make($data, $rules, $message)->validate();
@@ -101,7 +114,7 @@ class HomeController extends Controller
                 'nom' => $type,
             ]);
 
-            return redirect('/ajout');
+            return redirect('/ajout')->with('toastr', ['statut' => 'success', 'message' => 'Type ajouté.']);
         }
     }
 
@@ -116,24 +129,152 @@ class HomeController extends Controller
 
         $type = Type::find($id);
         if ($type == false){
-            abort(404);
+            return back()->with('toastr', ['statut' => 'error', 'message' => 'Il y a eu un problème.']);
         }else{
             Type::where('id', $id)->delete();
-            return back();
+            return back()->with('toastr', ['statut' => 'success', 'message' => 'Type supprimé.']);
         }
 
 
     }*/
 
-    public function liste()
+
+    public function admin()
     {
         $type_select = request('type_select');
         $types = Type::all();
-        if($type_select == 'Tous' | $type_select == null){
+
+        $qualite_select = request('qualite_select');
+        $qualite = Materiel::distinct()->select('qualite')->get();
+
+        $etat_select = request('etat_select');
+        $etat = Materiel::distinct()->select('etat')->get();
+
+        if($type_select == null && $qualite_select == null && $etat_select == null){
+
             $materiel = Materiel::all();
+
         }else{
-            $materiel = Materiel::where('type_mat', $type_select)->get();
+            $materiel = Materiel::where('type_id', $type_select)
+                ->orwhere('qualite', $qualite_select)
+                ->orwhere('etat', $etat_select)
+                ->get();
         }
-        return view('liste', ['materiel' => $materiel], ['types' => $types]);
+
+        if($type_select != null && $qualite_select != null && $etat_select != null){
+
+            $materiel = Materiel::where('type_id', $type_select)
+                ->where('qualite', $qualite_select)
+                ->where('etat', $etat_select)
+                ->get();
+
+        }
+
+        if($type_select != null && $qualite_select != null && $etat_select == null){
+
+            $materiel = Materiel::where('type_id', $type_select)
+                ->where('qualite', $qualite_select)
+                ->get();
+
+        }
+
+        if($type_select == null && $qualite_select != null && $etat_select != null){
+
+            $materiel = Materiel::where('qualite', $qualite_select)
+                ->where('etat', $etat_select)
+                ->get();
+
+        }
+
+        if($type_select != null && $qualite_select == null && $etat_select != null){
+
+            $materiel = Materiel::where('type_id', $type_select)
+                ->where('etat', $etat_select)
+                ->get();
+
+        }
+
+        return view('admin', ['materiel' => $materiel, 'types' => $types, 'qualite' => $qualite, 'etat' => $etat]);
+    }
+
+    public function remove_mat($id){
+
+        $materiel = Materiel::find($id);
+        if ($materiel == false){
+            return back()->with('toastr', ['statut' => 'error', 'message' => 'Il y a eu un problème.']);
+        }else{
+            Materiel::where('id', $id)->delete();
+            return back()->with('toastr', ['statut' => 'success', 'message' => 'Matériel supprimé.']);
+        }
+    }
+
+    public function change_qualite($qualite, $id){
+
+        $materiel = Materiel::find($id);
+        if ($materiel == false){
+            return back();
+        }else{
+            $materiel->qualite = $qualite;
+            $materiel->save();
+
+            return back();
+        }
+    }
+
+    public function reservation(){
+        $type_select = request('type_select');
+        $types = Type::all();
+
+        $qualite_select = request('qualite_select');
+        $qualite = Materiel::distinct()->select('qualite')->get();
+
+        $etat_select = request('etat_select');
+        $etat = Materiel::distinct()->select('etat')->get();
+
+        if($type_select == null && $qualite_select == null && $etat_select == null){
+
+            $materiel = Materiel::all();
+
+        }else{
+            $materiel = Materiel::where('type_id', $type_select)
+                ->orwhere('qualite', $qualite_select)
+                ->orwhere('etat', $etat_select)
+                ->get();
+        }
+
+        if($type_select != null && $qualite_select != null && $etat_select != null){
+
+            $materiel = Materiel::where('type_id', $type_select)
+                ->where('qualite', $qualite_select)
+                ->where('etat', $etat_select)
+                ->get();
+
+        }
+
+        if($type_select != null && $qualite_select != null && $etat_select == null){
+
+            $materiel = Materiel::where('type_id', $type_select)
+                ->where('qualite', $qualite_select)
+                ->get();
+
+        }
+
+        if($type_select == null && $qualite_select != null && $etat_select != null){
+
+            $materiel = Materiel::where('qualite', $qualite_select)
+                ->where('etat', $etat_select)
+                ->get();
+
+        }
+
+        if($type_select != null && $qualite_select == null && $etat_select != null){
+
+            $materiel = Materiel::where('type_id', $type_select)
+                ->where('etat', $etat_select)
+                ->get();
+
+        }
+
+        return view('reservation', ['materiel' => $materiel, 'types' => $types, 'qualite' => $qualite, 'etat' => $etat]);
     }
 }

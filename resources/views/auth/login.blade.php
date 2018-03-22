@@ -1,69 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card-header">Login</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <!-- ===== SECTION LOGIN ===== -->
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
+    <section class="login_content">
+        <img id="login_MMI" src="img/mmi.png">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+        <div class="login_centre">
+            <!-- Form-->
+            <div class="form">
+                <div class="form-toggle"></div>
+                <div class="form-panel one">
+                    <div class="form-header">
+                        <h1>Se connecter</h1>
+                    </div>
+                    <div class="form-content">
+                        <form method="POST" action="{{ route('login') }}">
+                            {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="username">Identifiant</label>
+                                <input type="text" id="username" placeholder="email" name="email" value="{{ old('email') }}" required autofocus />
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                    @endif
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password">Mot de passe</label>
+                                <input type="password" id="password" placeholder="password" name="password" required />
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
+                            <div class="form-group">
+                                <label class="form-remember">
+                                    <input type="checkbox" value="None" id="squaredFour" name="remember" {{ old('remember') ? 'checked' : '' }} checked/>Remember me
+                                </label>
                             </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                            <div class="form-group">
+                                <a class="form-recovery" href="{{ route('password.request') }}">Mot de passe oublié ?</a>
+                                <a class="form-recovery" href="{{ route('register') }}">Creer un compte</a>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <button type="submit">LogIn</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        <img id="home_optik" src="img/logo.png">
+    </section>
+
 @endsection

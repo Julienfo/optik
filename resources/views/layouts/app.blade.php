@@ -1,81 +1,96 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html class="no-js" lang="{{ app()->getLocale() }}">
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/connection.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.fullPage.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+
+    <!-- font anwsome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Font <font-family: 'Raleway', sans-serif;> -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        @if(Auth::id() == true)
+                @yield('content')
+        @else
+                @yield('content')
+        @endif
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/jquery.fullPage.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/preloader.js') }}"></script>
+    <script src="{{ asset('js/jquery.pjax.js') }}"></script>
+    <script src="{{ asset('js/ajax_fonction.js') }}"></script>
+    <script src="{{ asset('js/pajax.js') }}"></script>
+    <script src="{{ asset('js/JqueryPlugin.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/Script-Ajout/ReturnToTheTop.js') }}"></script>
     <script src="{{ asset('js/Script-Ajout/scroll.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/supp_type.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.fullPage.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var panelOne = $('.form-panel.two').height(),
+                panelTwo = $('.form-panel.two')[0].scrollHeight;
+
+            $('.form-panel.two').not('.form-panel.two.active').on('click', function(e) {
+                e.preventDefault();
+
+                $('.form-toggle').addClass('visible');
+                $('.form-panel.one').addClass('hidden');
+                $('.form-panel.two').addClass('active');
+                $('.form').animate({
+                    'height': panelTwo
+                }, 200);
+            });
+
+            $('.form-toggle').on('click', function(e) {
+                e.preventDefault();
+                $(this).removeClass('visible');
+                $('.form-panel.one').removeClass('hidden');
+                $('.form-panel.two').removeClass('active');
+                $('.form').animate({
+                    'height': panelOne
+                }, 200);
+            });
+        });
+    </script>
+
+    @if(Session::has('toastr'))
+        <script>
+            $(document).ready(function () {
+                toastr.{{Session::get('toastr')['statut']}}('{{Session::get('toastr')['message']}}')
+            });
+        </script>
+    @endif
 </body>
 </html>

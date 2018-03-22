@@ -1,6 +1,6 @@
 /* ==========================================================================
   Loader pages ------> Don't Work
-   ========================================================================== 
+   ==========================================================================
 
 		#preloader {
 			position: fixed;
@@ -9,11 +9,11 @@
 			right: 0;
 			bottom: 0;
 			background: #fff;
-	
+
 			z-index: 9999;
-		
+
 		}
-		
+
 		#status {
 			width: 20vw;
 			height: 50vh;
@@ -26,24 +26,21 @@
 			margin: 0 auto;
 			  padding: 5px 10px;
 
-		
+
 			background-image: url(../img/loader.gif);
-	
+
 			background-repeat: no-repeat;
 			background-position: center;
 		}
 		*/
 
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+/* ===============================================================
+  ------------- Base styles: opinionated defaults-----------------
+   ============================================================== */
 
 html {
 	color: #222;
 	font-size: 1em;
-	line-height: 1.4;
-	overflow: hidden;
 }
 
 a {
@@ -88,69 +85,56 @@ textarea {
 	display: none !important;
 }
 
-/*-----======== FIRST PAGE ------========*/
+/* ===============================================================
+  ----------------------- HOME PAGE LOGIN ----------------------
+   ============================================================== */
 
 /*--------- HEADER ---------*/
 
-.content {
-	background-image: url(../img/bg.png);
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100%;
-	height: 100vh;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.header {
+header {
 	position: fixed;
 	z-index: 999;
 	width: 100%;
 	font-weight: 600;
 	font-family: 'Raleway';
 	display: grid;
-	grid-template-columns: 1fr 18vw 1fr;
+	grid-template-columns: 2fr 1fr 2fr;
+}
+
+header div {
+	color: white;
+	text-transform: uppercase;
+	font-size: 12px;
+	margin-top: 2vh;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .logo {
-	width: 80%;
-	margin-right: auto;
-	margin-left: 15%;
+	padding-top: 1vh;
+	width: 70%;
+	text-align: center;
+	transition: ease-in-out 300ms;
 }
 
-.logo_mmi {
-	width: 80%;
-	margin: auto;
+.logo:hover {
+	transform: scale(1.05);
 }
 
-.header div {
-	display: block;
-	margin: auto;
-	color: white;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	line-height: 20vh;
-}
-
-.nav_droite {
-	margin-left: auto;
-	margin-right: auto;
+.nav_droite,
+.nav_gauche {
+	padding-top: 40px;
 }
 
 .nav_droite a {
 	color: white;
 	position: relative;
-	margin-left: 2vw;
+	margin-left: 4%;
 }
 
-.nav_gauche {
-	margin-left: auto;
-	margin-right: auto;
-}
 
 .nav_gauche a {
-	margin-right: 2vw;
+	margin-right: 4%;
 	position: relative;
 	color: white;
 }
@@ -190,6 +174,19 @@ textarea {
 	width: 100%;
 }
 
+/*--------- FIRST PAGE ---------*/
+
+.content {
+	background-image: url(../img/bg.png);
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .title {
 	grid-template-columns: 1fr;
 	display: grid;
@@ -201,8 +198,8 @@ textarea {
 }
 
 .title img {
-	width: 22%;
-
+	width: 25%;
+	margin: auto;
 }
 
 .title h3 {
@@ -210,7 +207,7 @@ textarea {
 	line-height: 4vh;
 	text-transform: uppercase;
 	font-weight: bold;
-	font-size: 2em;
+	font-size: 1.3em;
 }
 
 .title h4 {
@@ -220,9 +217,9 @@ textarea {
 
 .carton,
 .form_swig {
-	margin-top: 10vh;
+	margin-top: 5vh;
 	display: block;
-	width: 3vw;
+	width: ;
 	height: auto;
 	margin-right: auto;
 	margin-left: auto;
@@ -258,25 +255,96 @@ textarea {
 }
 
 .content2 {
-	padding-top: 23vh;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-auto-rows: 50px;
+	grid-auto-rows: 250px;
 	grid-gap: 15px;
-	width: 1400px;
+	width: 1100px;
 	margin: auto;
+	padding-top: 11%;
 }
 
-.content2 i {
-	color: white;
-
-}
-
-.content2 div {
+.index_grid {
 	position: relative;
+	height: 100%;
+	box-shadow: 0px 0px 67px -5px rgba(0, 0, 0, 0.75);
 }
 
-.content2 span {
+.index_grid span {
+	font-family: 'Raleway';
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	display: block;
+	line-height: 3px;
+}
+
+.index_grid h1 {
+	padding-top: 2%;
+	padding-left: 20px;
+	padding-right: 10px;
+	margin-bottom: 2px;
+	text-transform: uppercase;
+	color: white;
+	font-size: 14pt;
+	font-weight: 500;
+}
+
+.index_grid h4 {
+	padding-left: 20px;
+	padding-right: 10px;
+	padding-top: -5px;
+	color: white;
+	font-size: 0.8em;
+	font-weight: 400;
+}
+
+/* --- Bloc --- */
+
+#bloc1 {
+	background-image: url("../img/img_grid/4.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+#bloc3 {
+	background-image: url("../img/img_grid/construct.png");
+	background-position: top;
+	background-size: cover;
+}
+
+#bloc4 {
+	background-image: url("../img/img_grid/3.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+#bloc6 {
+	background-image: url("../img/img_grid/5.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+/* --- Texte --- */
+
+.grid_txt_right {
+	text-align: right;
+}
+
+/* --- Bloc Centré Haut --- */
+
+.index_grid_midtop {
+	position: relative;
+	height: 125%;
+	box-shadow: 0px 0px 67px -5px rgba(0, 0, 0, 0.75);
+	background-image: url("../img/img_grid/1.jpg");
+	background-position: top;
+	background-size: cover;
+}
+
+.index_grid_midtop span {
 	font-family: 'Raleway';
 	background-color: rgba(0, 0, 0, 0.4);
 	position: absolute;
@@ -286,130 +354,64 @@ textarea {
 	display: block;
 	margin: auto;
 	line-height: 3px;
+	text-align: center;
 }
 
-.content2 h1 {
-	padding-top: 2.5%;
+.index_grid_midtop h1 {
+	padding-top: 2%;
 	padding-left: 10px;
+	margin-bottom: 2px;
 	text-transform: uppercase;
 	color: white;
 	font-size: 14pt;
 }
 
-.content2 h4 {
+.index_grid_midtop h4 {
 	padding-left: 10px;
 	color: white;
 	font-size: 0.8em;
+	font-weight: 400;
 }
 
-.content2 div {
+/* --- Bloc Centré Bas --- */
+
+.index_grid_midbottom {
+	margin-top: 60px;
+	position: relative;
+	height: 75%;
 	box-shadow: 0px 0px 67px -5px rgba(0, 0, 0, 0.75);
-}
-
-.content2 div:nth-child(1) {
-	margin-top: 190px;
-	margin-bottom: -250px;
-	grid-row: 3 / 7;
-	background-image: url("../img/img_grid/5.jpg");
-	background-position: top;
-	background-size: cover;
-}
-
-.content2 div:nth-child(1) span {
-	text-align: left;
-}
-
-.content2 div:nth-child(2) {
-	margin-top: 120px;
-	margin-bottom: -185px;
-	grid-row: 3 / 8;
-	background-image: url("../img/img_grid/1.jpg");
-	background-position: top;
-	background-size: cover;
-}
-
-.content2 div:nth-child(2) span {
-	text-align: center;
-}
-
-.content2 div:nth-child(3) {
-	margin-top: 190px;
-	margin-bottom: -250px;
-	grid-row: 3 / 7;
-	background-image: url("../img/img_grid/construct.png");
-	background-position: top;
-	background-size: 100%;
-}
-
-.content2 div:nth-child(3) span {
-	text-align: right;
-}
-
-.content2 div:nth-child(3) h1 {
-	padding-right: 10px;
-}
-
-.content2 div:nth-child(3) h4 {
-	padding-right: 10px;
-}
-
-.content2 div:nth-child(4) {
-	margin-top: -50px;
-	margin-bottom: -190px;
-	grid-row: 3 / 1;
-	background-image: url("../img/img_grid/4.jpg");
-	background-position: top;
-	background-size: cover;
-}
-
-.content2 div:nth-child(4) span {
-	text-align: left;
-}
-
-.content2 div:nth-child(5) {
-	margin-top: -50px;
-	margin-bottom: -119px;
-	grid-row: 3 / 1;
 	background-image: url("../img/img_grid/carton.jpg");
 	background-position: top;
-	background-size: 150%;
+	background-size: cover;
 }
 
-.content2 div:nth-child(5) span {
-	top: 0;
-	bottom: auto;
+.index_grid_midbottom span {
+	font-family: 'Raleway';
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	display: block;
+	margin: auto;
+	line-height: 3px;
 	text-align: center;
 }
 
-.content2 div:nth-child(6) {
-	margin-top: -50px;
-	margin-bottom: -190px;
-	background-image: url("../img/img_grid/construct.png");
-	background-position: top;
-	background-size: cover;
-	grid-row: 3 / 1;
+.index_grid_midbottom h1 {
+	padding-top: 2%;
+	padding-left: 10px;
+	margin-bottom: 2px;
+	text-transform: uppercase;
+	color: white;
+	font-size: 14pt;
 }
 
-.content2 div:nth-child(6) span {
-	text-align: right;
-}
-
-.content2 div:nth-child(6) h1 {
-	padding-right: 10px;
-}
-
-.content2 div:nth-child(6) h4 {
-	padding-right: 10px;
-}
-
-.form_swig {
-	display: block;
-	margin-top: 230px;
-	width: 2.5vw;
-	height: auto;
-	margin-right: auto;
-	margin-left: auto;
-	animation: swing 1000ms infinite;
+.index_grid_midbottom h4 {
+	padding-left: 10px;
+	color: white;
+	font-size: 0.8em;
+	font-weight: 400;
 }
 
 
@@ -424,296 +426,792 @@ textarea {
 }
 
 .content3 {
-	padding-top: 21vh;
+	padding-top: 20vh;
 	text-align: center;
 }
 
 .mockup {
-	width: 1200px;
+	width: 900px;
 }
 
 
-/*------======== AJOUTER DU MATERIEL ------========*/
+/* ==========================================================================
+--------------------------- PAGE AJOUTER DU MATERIEL ----------------------
+========================================================================== */
 
-.content4_bg {
-	background-attachment: fixed;
-	background-image: url(../img/bg4.jpg);
-	background-position: top;
-	background-size: cover;
-	width: 100vw;
-	height: 100vh;
-	position: relative;
+/*------======== HEADER ------========*/
+
+.AjouterMatos_page1 {
 	overflow: hidden;
-
-}
-
-.content4 {
-	margin: auto;
-	text-transform: uppercase;
-	color: white;
-	font-size: 2.5em;
-	display: grid;
-	font-weight: 900;
-	font-family: 'Raleway';
-	grid-template-columns: 900px 1fr;
-	overflow: hidden;
-	text-align: center;
-}
-
-.txt-content4 {
 	width: 100%;
+	height: 100vh;
+	background: url(../img/ajoutermatos.png) fixed top;
+	background-size: cover;
+	position: relative;
 }
 
-.txt-content4 span {
+.AjouterMatos_page1 h2 {
+	margin-top: 2%;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 2em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.AjouterMatos_page1 h2:hover {
+	transform: scale(1.05);
+}
+
+
+/*------======== FORMULAIRES ------========*/
+
+.AjouterMatos_grid {
+	display: grid;
+	text-align: center;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* --- Taille des box ---*/
+
+.screen-form {
+	width: 80%;
+	height: 100%;
+	margin-top: 4%;
+	margin-left: 10%;
+	background-color: rgba(1, 1, 1, 0.6);
+	box-shadow: 0px 0px 42px -4px rgba(0, 0, 0, 0.95);
+	transition: ease-in-out 300ms;
+}
+
+.screen-form:hover {
+	transform: scale(1.05);
+}
+
+.add_title {
+	display: block;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Raleway';
+	font-weight: 700;
+	font-size: 1em;
+}
+
+.little_title {
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #fff;
+	font-family: 'Raleway';
+	font-weight: 500;
 	font-size: 0.8em;
 }
 
-.txt-content4 img {
-	padding: 3vh 0 3vh 0;
-	width: 11vw;
-	height: auto;
-}
-
-.acces a {
-	color: white;
-	font-size: 0.5em;
-}
-
-.screen {
-	right: 0;
-	bottom: 0;
-	position: absolute;
-	width: 550px;
-	height: 550px;
-	background-position: top;
-	background-size: cover;
-	background-image: url(../img/ajouter_screen.png);
-}
-
-.screen-form {
-	top: 3.9vh;
-	left: 3vw;
-	position: absolute;
-	width: 505px;
-	height: 455px;
+.douchette_desc {
+	text-align: center;
+	font-size: 0.7em;
+	color: #fff;
+	font-family: 'Raleway';
 	display: block;
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-bottom: 5%;
 }
 
-.screen-form a {
-	padding-right: 25px;
-	padding-left: 25px;
-	font-size: 0.3em;
-	line-height: 70px;
-	color: dimgrey;
-	font-weight: 600;
+.screen-form input[type=text] {
+	padding: 4% 2% 4% 2%;
+	color: #1f1f1f;
+	background-color: #ededed;
+	border-style: none;
+	width: 80%;
+	text-align: center;
 }
 
-.screen-form hr {
-	margin: 0 40px 30px 40px;
+.screen-form input[type=submit] {
+	padding: 4% 2% 4% 2%;
+	color: #1f1f1f;
+	background-color: #ededed;
+	border-style: none;
+	width: 80%;
+	transition: ease-in-out 300ms;
 }
 
-.screen-form h4 {
-	margin-bottom: -10px;
-	margin-left: 80px;
-	text-align: left;
-	font-size: 0.2em;
-	color: black;
-	padding: 0;
+.screen-form input[type=submit]:hover {
+	transform: scale(1.05);
 }
 
-.screen-form h3 {
-	margin-top: 25px;
-	margin-left: 80px;
-	text-align: left;
-	font-size: 0.2em;
-	color: #a6d26e;
-	padding: 0;
+textarea {
+	padding: 10px 20px 10px 10px;
+	color: #1f1f1f;
+	background-color: #ededed;
+	border-style: none;
+	width: 77%;
 }
 
-.screen-form [type='text'] {
-	height: 24px;
-	border: solid 0.5px black;
-	margin-right: 225px;
-	text-align: left;
-	font-size: 0.3em;
-	padding: 0;
-	color: black;
+.screen-form select {
+	margin-top: 5px;
+	margin-bottom: 15px;
+	color: #1f1f1f;
+	background-color: #ededed;
+	width: 80%;
+	height: 45px;
+	font-style: italic;
+	font-size: 0.9em;
+	align-content: center;
 }
 
-.etat [type='checkbox'] {
-	padding: 0;
-	margin: 0;
-	display: inline;
+.create_type_add a {
+	color: #f47a7e;
+	font-weight: 800;
+	text-transform: uppercase;
+	font-size: 0.7em;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Raleway';
 }
 
-.screen-form h5 {
-	text-align: left;
-	font-size: 0.1em;
-	color: grey;
-	padding: 0;
-	display: inline;
+.screen-form img {
+	padding: 5%;
+	width: 50%;
 }
 
-.etat {
-	margin-top: -10px;
-	margin-left: 70px;
-	display: grid;
-	grid-template-columns: 70px 70px 70px;
+
+::placeholder {
+	font-style: italic;
+	text-align: center;
+	font-family: 'Raleway';
+	font-size: 0.8em;
 }
 
-.note {
-	display: grid;
-	grid-template-columns: 1fr;
+.add_etapes {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin-top: 5%;
 }
 
-/*------======== PAGE ADMINISTRER DU MATERIEL ------========*/
+.add_etapes img {
+	padding-right: 15vw;
+	padding-left: 15vw;
+}
+
+
+/* ==========================================================================
+------------------ PAGE ADMINSTRER DU MATERIEL ----------------------
+========================================================================== */
+
+/* ---------======Header=====---------*/
 
 .administrer_header {
 	background-attachment: fixed;
-	background-image: url(../img/Admin_bg1.png);
+	background-image: url(../img/bgadmin.png);
 	background-position: top;
 	background-size: cover;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
+	position: relative;
 }
 
-.header_administration {
-	z-index: 999;
-	width: 100%;
-	font-weight: 600;
-	font-family: 'Raleway';
-	display: grid;
-	grid-template-columns: 1fr 18vw 1fr;
+.header_admin {
+	position: sticky;
 }
 
-.header_administration div {
-	display: block;
-	margin: auto;
-	color: white;
-	text-transform: uppercase;
-	font-size: 0.8em;
-	line-height: 20vh;
-}
 
-.content_header_administration {
-	text-align: center;
+/*------ PARTIE TABLEAU FILTERS -========*/
+
+.administrer_list h2 {
+	margin-top: 4%;
 	color: #fff;
 	text-transform: uppercase;
-	padding-top: 10vh;
+	font-size: 1.5em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
 }
 
-.administration_title {
-	font-size: 4.2em;
+.administrer_list h2:hover {
+	transform: scale(0.95);
+}
+
+
+.administrer_filter {
+	display: flex;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 2%;
+	border-top: 2px solid #f47a7e;
+	border-left: 2px solid #f47a7e;
+	border-right: 2px solid #f47a7e;
+	padding: 15px 0px 10px 0px;
+	background-color: rgba(1, 1, 1, 0.3);
+}
+
+.administrer_filter ul {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+	width: 100%;
+	color: #fff;
+}
+
+.administrer_filter ul li {
+	width: 100%;
+	text-transform: uppercase;
+	font-size: 0.7em;
+	text-align: center;
+	font-family: 'Raleway';
 	font-weight: 800;
+	line-height: 2;
+}
+
+
+.create_type {
+	margin-top: 2vh;
+}
+
+.create_type a {
+	color: #f47a7e;
+	font-weight: 800;
+	text-transform: uppercase;
+	font-size: 1em;
+	text-align: center;
+	vertical-align: middle;
 	font-family: 'Raleway';
 }
 
-.administration_subtitle {
-	font-size: 6em;
-	font-weight: 800;
-	font-family: 'Raleway';
-	border-bottom: 3px solid #fff;
+/*------ SELECT -========*/
+
+.monselect {
+	width: 8vw;
+	height: 4vh;
+	margin-left: 5px;
+	border: none;
+	background-color: #fff;
+	text-align-last: center;
+	color: #1f1f1f;
+	font-weight: 500;
 }
 
-.admin_carton {
-	margin-top: 25vh;
+.admin_trier {
+	margin-top: 2vh;
+	width: 4vh;
+	height: 4vh;
+	color: #f47a7e;
+	background-color: #fff;
+	border: none;
+}
+
+.fa-search {
+	font-size: 10px;
+}
+
+/*------ PARTIE TABLEAU ADMINISTRER DU MATOS -========*/
+
+.limiter {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.container-table100 {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.wrap-table100 {
+	padding-left: 10%;
+	padding-right: 10%;
+	width: 100%;
+}
+
+table {
+	border-spacing: 1;
+	border-collapse: collapse;
+	background: white;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+table * {
+	position: relative;
+}
+
+table td,
+table th {
+	padding-left: 8px;
+}
+
+table thead tr {
+	height: 7vh;
+	background: #f47a7e;
+}
+
+table tbody tr {
+	height: 5vh;
+}
+
+table tbody tr:last-child {
+	border: 0;
+}
+
+table td,
+table th {
+	text-align: left;
+}
+
+table td.l,
+table th.l {
+	text-align: right;
+}
+
+table td.c,
+table th.c {
+	text-align: center;
+}
+
+table td.r,
+table th.r {
+	text-align: center;
+}
+
+
+.table100-head th {
+	font-family: 'Raleway';
+	font-size: 1em;
+	color: #fff;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+	background-color: #f5f5f5;
+}
+
+tbody tr {
+	font-family: 'Raleway';
+	font-size: 0.8em;
+	;
+	color: #575757;
+	line-height: 1.2;
+	font-weight: unset;
+}
+
+tbody tr:hover {
+	color: #555555;
+	background-color: #ffdde0;
+	cursor: pointer;
+}
+
+.column1 {
+	width: 260px;
+	text-align: center;
+}
+
+.column2 {
+	width: 110px;
+	text-align: center;
+}
+
+.column3 {
+	width: 145px;
+	text-align: center;
+}
+
+.column4 {
+	width: 110px;
+	text-align: center;
+}
+
+.column5 {
+	width: 290px;
+	text-align: center;
+}
+
+.column6 {
+	width: 130px;
+	text-align: center;
+	padding-right: 62px;
+}
+
+.column7 {
+	width: 30px;
+	text-align: center;
+	padding-right: 62px;
+}
+
+.fa-trash-o {
+	font
+}
+
+.pin_admin {
+	padding-bottom: 40px;
+}
+
+.admin_pin {
+	margin-top: 5vh;
 	display: block;
-	width: 3vw;
+	width: 2vw;
 	height: auto;
 	margin-right: auto;
 	margin-left: auto;
 	animation: swing 1000ms infinite;
 }
 
-/*------ PARTIE TABLEAU ADMINISTRER DU MATOS -========*/
 
-.administrer_list {
-	background-image: url(../img/Admin_bgall.png);
-	background-repeat: repeat;
+
+
+
+/* ==========================================================================
+------------------ PAGE RESERVER DU MATERIEL ----------------------
+========================================================================== */
+
+/* ---------======Header=====---------*/
+
+.reserve_header {
+	background-attachment: fixed;
+	background-image: url(../img/bgreserv.png);
+	background-position: top;
 	background-size: cover;
 	width: 100%;
-	height: 2000px;
+	min-height: 100vh;
+
 }
 
-/*------ TABLEAU HEAD -========*/
+.header_reserve {
+	position: sticky;
+}
 
-.administatrion_list_title {
-	display: grid;
-	grid-template-columns: 1fr 5fr 1fr;
-	font-weight: 500;
-	font-size: 1.3em;
-	font-family: 'Raleway';
+
+/*------ TITLE Reserver -========*/
+
+.reserve_list h2 {
 	color: #fff;
 	text-transform: uppercase;
-	padding-top: 50px;
-	padding-left: 50px;
-}
-
-.administatrion_list_title span {
-	padding-top: 10px;
-}
-
-
-.administatrion_list_title hr {
-	display: block;
-	font-weight: 500;
-	font-size: 1.3em;
+	font-size: 2em;
+	text-align: center;
 	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.reserve_list h2:hover {
+	transform: scale(0.95);
+}
+
+.reserve_list h4 {
 	color: #fff;
 	text-transform: uppercase;
-	margin-bottom: 4%;
+	font-size: 1em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.reserve_list h4:hover {
+	transform: scale(0.95);
+}
+
+/*------ PARTIE MATERIEL RESERVER -========*/
+
+.reserve_bloc {
+	margin-left: 10%;
+	margin-right: 10%;
+	padding: 1%;
+	background-color: rgba(1, 1, 1, 0.3);
+	border: 1px solid #6cceec;
+}
+
+.reserve_bloc_grid hr {
+	margin-left: 10%;
 	margin-right: 10%;
 }
 
-.administatrion_list_title select {
-	display: block;
-	font-family: 'Raleway';
-	font-size: 0.8em;
-	background-image: url(../img/Admin_bgall.png);
-	margin-top: 20px;
-	border: none;
-	color: #fff;
-}
-
-
-/*------ TABLEAU ADMINISTRER -========*/
-
-.tableau {
-overflow-x:auto;
-}
-
-
-.admin_table {
-	border: 2px solid #fff;
-	border-collapse: collapse;
+.add_reserve_txt{
 	text-align: center;
 }
 
-.admin_table tbody tr {
-	border: 2px solid #fff;
-}
-
-.admin_tableau_ligne_pres td {
-	border: 2px solid #fff;
-	padding: 10px;
-}
-
-.admin_tableau_ligne_classique td {
-	border: 1px solid #fff;
-	padding: 20px 1% 10px 1%;
-}
-
-.admin_tableau_ligne_pres {
-	font-size: 1.3em;
-	font-weight: 800;
-	font-family: 'Raleway';
+.add_reserve_txt span{
 	color: #fff;
+	text-transform: uppercase;
+	font-size: 1em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 800;
+	line-height: 1.5;
+}
+
+.add_reserve_txt i{
+	margin-top: 1%;
+	color: #fff;
+	font-size: 1em;
+	text-align: center;
+	font-weight: 800;
+	border: solid 1px #fff;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.reserve_bloc_input{
+	margin-top: 1%;
+	text-align: center;
+}
+
+.input_reserve {
+	width: 20%;
+	height: 30px;
+	margin-bottom: 1%;
+	margin-right: 1%;
+}
+
+
+.reserve_bloc_validate {
+	text-align: center;
+}
+
+.reserve_bloc_validate input[type=text],
+.reserve_bloc_validate input[type=submit]{
+	width: 20%;
+	height: 30px;
+	margin-bottom: 1%;
+	margin-right: 1%;
+	font-family: 'Raleway';
+}
+
+
+/*------ PARTIE TABLEAU RESERVERS FILTERS -========*/
+
+.reserve_filter {
+	display: flex;
+	margin-left: 12%;
+	margin-right: 12%;
+	margin-top: 2%;
+	border-top: 2px solid #6cceec;
+	border-left: 2px solid #6cceec;
+	border-right: 2px solid #6cceec;
+	padding: 20px 0px 20px 0px;
+	background-color: rgba(1, 1, 1, 0.3);
+}
+
+.reserve_filter ul {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+	width: 100%;
+	color: #fff;
+}
+
+.reserve_filter ul li {
+	margin-left: 5%;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Raleway';
+	font-weight: 800;
+}
+
+/*------ PARTIE TABLEAU RESERVER DU MATOS -========*/
+
+.reserve_limiter {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.reserve_container-table100 {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.reserve_wrap-table100 {
+	padding-left: 12%;
+	padding-right: 12%;
+	padding-bottom: 5%;
+	width: 100%;
+}
+
+.reserve_table {
+	border-spacing: 1;
+	border-collapse: collapse;
+	background: white;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.reserve_table * {
+	position: relative;
+}
+
+.reserve_table td,
+.reserve_table th {
+	padding-left: 8px;
+}
+
+.reserve_table thead tr {
+	height: 7vh;
+	background: #6cceec;
+}
+
+.reserve_table tbody tr {
+	height: 5vh;
+}
+
+.reserve_table tbody tr:last-child {
+	border: 0;
+}
+
+.reserve_table td,
+.reserve_table th {
+	text-align: center
+}
+
+.reserve_table td.l,
+.reserve_table th.l {
+	text-align: right;
+}
+
+.reserve_table td.c,
+.reserve_table table th.c {
+	text-align: center;
+}
+
+.reserve_table td.r,
+.reserve_table th.r {
+	text-align: center;
+}
+
+
+.reserve_table100-head th {
+	font-family: 'Raleway';
+	font-size: 0.9em;
+	color: #fff;
+	line-height: 1.2;
 	text-transform: uppercase;
 }
 
-.admin_tableau_ligne_classique {
-	font-size: 1em;
-	font-weight: 200;
+.reserve_tbody tr:nth-child(even) {
+	background-color: #f5f5f5;
+}
+
+.reserve_tbody tr {
 	font-family: 'Raleway';
+	font-size: 0.8em;
+	color: #575757;
+	line-height: 1.2;
+	font-weight: unset;
+}
+
+.reserve_tbody tr:hover {
+	color: #555555;
+	background-color: #dff8ff;
+	cursor: pointer;
+}
+
+.reserve_column1 {
+	width: 150px;
+	text-align: center;
+}
+
+.reserve_column1 i {
+	font-size: 1.5em;
+}
+
+.reserve_column2 {
+	width: 180px;
+	text-align: center;
+}
+
+.reserve_column3 {
+	width: 245px;
+	text-align: center;
+}
+
+.reserve_column4 {
+	width: 130px;
+	text-align: center;
+}
+
+.reserve_column5 {
+	width: 190px;
+	text-align: center;
+}
+
+.reserve_column6 {
+	width: 230px;
+	text-align: center;
+	padding-right: 62px;
+}
+
+.reserve_column7 {
+	width: 180px;
+	text-align: center;
+	padding-right: 62px;
+}
+
+/*------ SLIDER RESERVER DU MATERIEL CONFIRMER -========*/
+
+.page_slider {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	text-align: center;
+background: rgba(1, 1, 1, 0.2);
+	z-index: 9999;
+}
+
+.page_slider span {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-top: 35vh;
 	color: #fff;
+	text-transform: uppercase;
+	font-size: 2.2em;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.page_slider button{
+	display: inline-block;
+	color: #000;
+	padding: 15px 35px;
+	margin-top: 45vh;
+	margin-right: 30px;
+}
+
+.page_slider div{
+	display: inline-block;
+}
+
+.page_slider div a{
+	display: inline-block;
+	color: #000;
+	padding: 15px 35px;
+	margin-top: 45vh;
+	margin-right: 30px;
 }
