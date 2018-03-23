@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Materiel;
 use App\Type;
+use App\Reservation;
+
 
 class HomeController extends Controller
 {
@@ -66,12 +68,6 @@ class HomeController extends Controller
 
 
         Validator::make($data, $rules, $message)->validate();
-
-        $ref_mat = Materiel::all('reference');
-
-        if($ref_mat == request('ref')){
-
-        }
 
         Materiel::create([
             'nom' => request('nom'),
@@ -194,7 +190,12 @@ class HomeController extends Controller
 
         }
 
-        return view('admin', ['materiel' => $materiel, 'types' => $types, 'qualite' => $qualite, 'etat' => $etat]);
+        return view('admin', [
+            'materiel' => $materiel,
+            'types' => $types,
+            'qualite' => $qualite,
+            'etat' => $etat
+        ]);
     }
 
     public function remove_mat($id){
@@ -230,6 +231,10 @@ class HomeController extends Controller
 
         $etat_select = request('etat_select');
         $etat = Materiel::distinct()->select('etat')->get();
+
+
+        $reservations = Reservation::all();
+
 
         if($type_select == null && $qualite_select == null && $etat_select == null){
 
@@ -275,6 +280,86 @@ class HomeController extends Controller
 
         }
 
-        return view('reservation', ['materiel' => $materiel, 'types' => $types, 'qualite' => $qualite, 'etat' => $etat]);
+        return view('reservation', [
+            'materiel' => $materiel,
+            'types' => $types,
+            'qualite' => $qualite,
+            'etat' => $etat,
+            'reservations' => $reservations
+        ]);
+    }
+
+    public function reserv_mat()
+    {
+
+        $date= date("Y-m-d");
+
+        //Validation des champs
+
+        $data = [
+            'reference' => request('reference'),
+            'nom_etudiant' => request('nom_etudiant'),
+            'prenom_etudiant' => request('prenom_etudiant'),
+            'carte_etudiant' => request('carte_etudiant')
+        ];  //nom du champ input et la valeur
+
+        $rules = [
+            'reference' => 'required|exists:materiels,reference',
+            'nom_etudiant' => 'required',
+            'prenom_etudiant' => 'required',
+            'carte_etudiant' => 'required'
+        ];  //nom du champ input a valider et la ou les regles
+
+        $message = [
+            'reference.required' => 'Veuillez remplir la reference.',
+            'reference.exists' => 'Cette reference n\'existe pas.',
+            'nom_etudiant.required' => 'Veuillez remplir le nom de l\'étudiant.',
+            'prenom_etudiant.required' => 'Veuillez remplir le prénom de l\'étudiant.',
+            'carte_etudiant.required' => 'Veuillez remplir le numéro de carte étudiant.'
+        ];
+
+
+        Validator::make($data, $rules, $message)->validate();
+
+        $etudiant_reserv = Reservation::where('carte_etudiant', request('carte_etudiant'))->first();
+
+        $ref_reserv = Materiel::where('reference', request('reference'))->where('etat', 'Réservé')->first();
+        $ref_perdu = Materiel::where('reference', request('reference'))->where('etat', 'Perdu')->first();
+
+        if($ref_reserv){
+            return back()->with('toastr', ['statut' => 'error', 'message' => 'Ce matériel est réservé.']);
+        }
+
+        if($ref_perdu){
+            return back()->with('toastr', ['statut' => 'error', 'message' => 'Ce matériel est perdu.']);
+        }
+
+        if($etudiant_reserv){
+            return back()->with('toastr', ['statut' => 'error', 'message' => 'Une réservation pour cet étudiant est en cours.']);
+        }
+
+        Reservation::create([
+            'date_debut' => $date,
+            'nom_etudiant' => request('nom_etudiant'),
+            'prenom_etudiant' => request('prenom_etudiant'),
+            'carte_etudiant' => request('carte_etudiant')
+        ]);
+
+        $references = request('reference');
+
+        $id_reservation = Reservation::select('id')->where('carte_etudiant', request('carte_etudiant'))->first();
+
+
+        foreach ($references as $reference){
+
+            Materiel::where('reference', $reference)->update([
+                'reservation_id' => $id_reservation->id,
+                'etat' => 'Réservé'
+            ]);
+
+        }
+
+        return back()->with('toastr', ['statut' => 'success', 'message' => 'Réservation réussie.']);
+
     }
 }

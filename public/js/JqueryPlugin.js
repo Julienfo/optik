@@ -43,19 +43,20 @@ $(document).ready(function () {
 				var entrer = $('<input>');
 				entrer.attr('type', 'text');
 				entrer.attr('class', 'input_reserve');
-				entrer.attr('name', 'nom_du_nouveau_champ');
+				entrer.attr('name', 'reference[]');
 				entrer.attr('placeholder', 'Reference materiel reserver');
-				entrer.appendTo('.reserve_bloc_input');
+				entrer.appendTo('.reserve_bloc_input').focus();
 			}
 		});
+
 
 		$('#plus').click(function () {
 			var champ = $('<input>');
 			champ.attr('type', 'text');
 			champ.attr('class', 'input_reserve');
-			champ.attr('name', 'nom_du_nouveau_champ');
+			champ.attr('name', 'reference[]');
 			champ.attr('placeholder', 'Reference materiel reserver');
-			champ.appendTo('.reserve_bloc_input');
+			champ.appendTo('.reserve_bloc_input').focus();
 		});
 		
 		//----- SUPPRIMER UN INPUT
@@ -64,6 +65,16 @@ $(document).ready(function () {
 		});
 				
 	});
+
+    //----- RESERVATION AJOUT CADDIE INPUT
+    $(function () {
+
+		$('.reserve_column1').click(function () {
+			var ref = $(this).attr('data-content');
+			$('.input_reserve').last().val(ref);
+        });
+
+    });
 	
 	//----- SLIDE RESERVATION
 	$(function () {

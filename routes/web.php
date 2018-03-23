@@ -32,3 +32,4 @@ Route::get('/remove_mat/{id}', 'HomeController@remove_mat')->where('id', '[0-9]+
 
 
 Route::get('/reservation', 'HomeController@reservation')->middleware('auth');
+Route::post('/reserv_mat', 'HomeController@reserv_mat')->middleware('auth');
