@@ -3,25 +3,25 @@
 @section('content')
     <header>
         <div class="nav_gauche">
-            <a href="#">Rendre du matériel</a>
-            <a href="/reservation">Réserver du matériel</a>
-            <a href="#">Récap des reservations</a>
+            <a href="/retour" data-pjax>Rendre du matériel</a>
+            <a href="/pre_reservation" data-pjax>Réserver du matériel</a>
+            <a href="/recapitulatif" data-pjax>Récap des reservations</a>
         </div>
         <div>
-            <a href="{{url('/home')}}">
+            <a href="{{url('/home')}}" data-pjax>
                 <img src="img/logo.png" class="logo">
             </a>
         </div>
         <div class="nav_droite">
-            <a href="/ajout">Ajouter matériel</a>
-            <a href="/admin">Administrer du materiel</a>
+            <a href="/ajout" data-pjax>Ajouter matériel</a>
+            <a href="/admin" data-pjax>Administrer du materiel</a>
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
+                   document.getElementById('logout-form').submit();" data-pjax>
 
                 {{ Auth::user()->name }}&nbsp;&nbsp;<i class="fa fa-sign-out"></i>
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;" data-pjax>
                 @csrf
             </form>
         </div>
@@ -46,7 +46,7 @@
             <div class="content2_bg">
                 <div class="content2">
 
-                    <a href="#">
+                    <a href="/pre_reservation" data-pjax>
                         <div class="index_grid" id="bloc1">
 							<span>
                 <h1>reserver du matériel</h1>
@@ -55,7 +55,7 @@
                         </div>
                     </a>
 
-                    <a href="/admin">
+                    <a href="/admin" data-pjax>
                         <div class="index_grid_midtop" id="bloc2">
 							<span class="grid_txt_middle">
                 <h1>Administer le matériel</h1>
@@ -63,7 +63,7 @@
             </span>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="/retour" data-pjax>
                         <div class="index_grid" id="bloc3">
 							<span class="grid_txt_right">
                 <h1>Rendre le materiel emprunter</h1>
@@ -71,7 +71,7 @@
             </span>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="/recapitulatif" data-pjax>
                         <div class="index_grid" id="bloc4">
 							<span>
                 <h1>Liste des reservations</h1>
@@ -79,19 +79,19 @@
             </span>
                         </div>
                     </a>
-                    <a href="/ajout">
+                    <a href="/gestion" data-pjax>
                         <div class="index_grid_midbottom" id="bloc5">
 							<span class="grid_txt_middle">
-                <h1>Ajouter du matériel</h1>
-                <h4> Ajouter un nouveau matériel dans la base de donnée</h4>
+                <h1>Gérer les cartes</h1>
+                <h4> Supprimer des cartes de la base de donnée</h4>
             </span>
                         </div>
                     </a>
-                    <a href="#">
+                    <a href="/retrouve" data-pjax>
                         <div class="index_grid" id="bloc6">
 							<span class="grid_txt_right">
-                <h1>Liste  Étudiante</h1>
-                <h4>[Fonctionalités à venir]</h4>
+                <h1>Matériel perdu retrouvé</h1>
+                <h4> Remettre disponible du matériel retrouvé</h4>
             </span>
                         </div>
                     </a>

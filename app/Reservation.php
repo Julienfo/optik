@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['date_debut', 'carte_etudiant', 'nom_etudiant', 'prenom_etudiant'];
+    protected $fillable = ['nom_etudiant', 'prenom_etudiant', 'carte_etudiant','date_debut', 'date_fin', 'details'];
     protected $table = "reservation";
 
     public function materiels(){

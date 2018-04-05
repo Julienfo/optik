@@ -1,11 +1,21 @@
-@extends('layouts.app')
+<!-- ===== SUPPRIMER UN TYPE ===== -->
+<div class="screen_form_supptype">
+    <span class="supp_title_type">Supprimer un des types inutilisé:</span>
+    <div class="add_type">
+        <ul class="addmatos_type">
+            @if(empty($tri_types))
+                <span>Aucun type est inutilisé.</span>
+            @else
+            @foreach($types as $type)
+                @foreach($tri_types as $tri_type)
+                    @if($type->id == $tri_type['id'])
+                        <li>{{$type->nom}} <a class="delete" style="color: #fff; text-transform: none" href="/remove_type/{{$type->id}}"><i class="fa fa-trash"></i></a></li><br/>
+                    @endif
+                @endforeach
+            @endforeach
+            @endif
+        </ul>
+    </div>
+</div>
 
-@section('content')
-    <h1>Suppression d'un type à la base de donnée</h1>
-    <br/>
-    <p>Les types :</p>
 
-    @foreach( $types as $type)
-        <span>{{$type->nom}}&nbsp;<a class="delete" href="/remove_type/{{$type->id}}">x</a></span><br/>
-    @endforeach
-@endsection

@@ -86,7 +86,7 @@ textarea {
 }
 
 /* ===============================================================
-  ----------------------- HOME PAGE LOGIN ----------------------
+  ----------------------- HOME PAGE  ----------------------
    ============================================================== */
 
 /*--------- HEADER ---------*/
@@ -852,6 +852,12 @@ tbody tr:hover {
 	padding-right: 62px;
 }
 
+.column7_gest {
+	width: 30px;
+	text-align: center;
+	padding-right: 62px;
+}
+
 .fa-trash-o {
 	font
 }
@@ -887,7 +893,6 @@ tbody tr:hover {
 	background-size: cover;
 	width: 100%;
 	min-height: 100vh;
-
 }
 
 .header_reserve {
@@ -940,11 +945,11 @@ tbody tr:hover {
 	margin-right: 10%;
 }
 
-.add_reserve_txt{
+.add_reserve_txt {
 	text-align: center;
 }
 
-.add_reserve_txt span{
+.add_reserve_txt span {
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 1em;
@@ -954,7 +959,7 @@ tbody tr:hover {
 	line-height: 1.5;
 }
 
-.add_reserve_txt i{
+.add_reserve_txt i {
 	margin-top: 1%;
 	color: #fff;
 	font-size: 1em;
@@ -965,7 +970,7 @@ tbody tr:hover {
 	cursor: pointer;
 }
 
-.reserve_bloc_input{
+.reserve_bloc_input {
 	margin-top: 1%;
 	text-align: center;
 }
@@ -983,7 +988,7 @@ tbody tr:hover {
 }
 
 .reserve_bloc_validate input[type=text],
-.reserve_bloc_validate input[type=submit]{
+.reserve_bloc_validate input[type=submit] {
 	width: 20%;
 	height: 30px;
 	margin-bottom: 1%;
@@ -1173,17 +1178,17 @@ tbody tr:hover {
 /*------ SLIDER RESERVER DU MATERIEL CONFIRMER -========*/
 
 .page_slider {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	text-align: center;
-background: rgba(1, 1, 1, 0.2);
+	background: rgba(1, 1, 1, 0.6);
 	z-index: 9999;
 }
 
-.page_slider span {
+.slider_title {
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -1196,7 +1201,46 @@ background: rgba(1, 1, 1, 0.2);
 	transition: ease-in-out 300ms;
 }
 
-.page_slider button{
+.slider_details {
+	position: absolute;
+		left: 0;
+	right: 0;
+	margin-top: 43vh;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.position_textarea {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.slide_area {
+	margin-top: 50vh;
+	font-size: 1em;
+	font-family: 'Raleway';
+	width: 30%;
+	text-align: center;
+}
+
+.page_slider button {
+	display: inline-block;
+	color: #000;
+	padding: 15px 35px;
+	margin-top: 60vh;
+	margin-right: 30px;
+}
+
+.page_slider div {
+	display: inline-block;
+}
+
+.page_slider div a {
 	display: inline-block;
 	color: #000;
 	padding: 15px 35px;
@@ -1204,14 +1248,843 @@ background: rgba(1, 1, 1, 0.2);
 	margin-right: 30px;
 }
 
-.page_slider div{
-	display: inline-block;
+
+/* ==========================================================================
+------------------ PAGE RECAP DE LA RESERVATION  ----------------------
+========================================================================== */
+
+/*------ LISTING EMPRUNT -========*/
+
+.recap_header {
+	background-attachment: fixed;
+	background-image: url(../img/bgrecap.png);
+	background-position: top;
+	background-size: cover;
+	width: 100%;
+	min-height: 100vh;
 }
 
-.page_slider div a{
-	display: inline-block;
-	color: #000;
-	padding: 15px 35px;
-	margin-top: 45vh;
-	margin-right: 30px;
+/*------ PARTIE TABLEAU RESERVERS FILTERS -========*/
+
+.recap_filter {
+	display: flex;
+	margin-left: 12%;
+	margin-right: 12%;
+	margin-top: 2%;
+	border-top: 2px solid #e67e22;
+	border-left: 2px solid #e67e22;
+	border-right: 2px solid #e67e22;
+	padding: 20px 0px 20px 0px;
+	background-color: rgba(1, 1, 1, 0.3);
+}
+
+.recap_filter ul {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+	width: 100%;
+	color: #fff;
+}
+
+.recap_filter ul li {
+	margin-left: 5%;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Raleway';
+	font-weight: 800;
+}
+
+.search-orange {
+	color: #e67e22;
+}
+
+
+/*------ PARTIE TABLEAU RECAP RESERVATION -========*/
+
+.recap_limiter {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.recap_container-table100 {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.recap_wrap-table100 {
+	padding-left: 12%;
+	padding-right: 12%;
+	padding-bottom: 5%;
+	width: 100%;
+}
+
+.recap_table {
+	border-spacing: 1;
+	border-collapse: collapse;
+	background: white;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.recap_table * {
+	position: relative;
+}
+
+.recap_table td,
+.recap_table th {
+	padding-left: 8px;
+}
+
+.recap_table thead tr {
+	height: 7vh;
+	background: #e67e22;
+}
+
+.recap_table tbody tr {
+	height: 5vh;
+}
+
+.recap_table tbody tr:last-child {
+	border: 0;
+}
+
+.recap_table td.l,
+.recap_table th.l {
+	text-align: right;
+}
+
+.recap_table td.c,
+.recap_table table th.c {
+	text-align: center;
+}
+
+.recap_table td.r,
+.recap_table th.r {
+	text-align: center;
+}
+
+
+.recap_table100-head th {
+	font-family: 'Raleway';
+	font-size: 0.9em;
+	color: #fff;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.recap_tbody tr:nth-child(even) {
+	background-color: #f5f5f5;
+}
+
+.recap_tbody tr {
+	font-family: 'Raleway';
+	font-size: 0.8em;
+	color: #575757;
+	line-height: 1.2;
+	font-weight: unset;
+}
+
+.recap_tbody tr:hover {
+	color: #555555;
+	background-color: #ffe9d6;
+	cursor: pointer;
+}
+
+.recap_column1 {
+	width: 150px;
+	text-align: center;
+}
+
+.recap_column2 {
+	width: 180px;
+	text-align: center;
+}
+
+.recap_column3 {
+	width: 205px;
+	text-align: center;
+}
+
+/*------ Liste materiel emprunt CAS "N"=====*/
+
+.recap_column4main {
+	width: 190px;
+	text-align: center;
+}
+
+.recap_column4 {
+	width: 190px;
+	padding-top: 15px;
+}
+
+.recap_column4 ul {
+	padding-left: 35%;
+	list-style-type: square;
+}
+
+/*--===*/
+
+.recap_column5 {
+	width: 150px;
+	text-align: center;
+}
+
+.recap_column6 {
+	width: 150px;
+	text-align: center;
+}
+
+.recap_column7 {
+	width: 10px;
+	text-align: center;
+	padding-right: 62px;
+}
+
+.fa-print {
+	color: #e67e22;
+}
+
+/*------ PRINT RECAP RESERVATION =====*/
+
+.imprimer_recap button {
+	height: 40px;
+	font-size: 1.2em;
+	font-family: 'Raleway', serif;
+	border-style: none;
+}
+
+.imprimer_recap img {
+	width: 30px;
+	height: auto;
+}
+
+.title_recap {
+	display: none;
+}
+
+.print_logo {
+	padding-top: 1vh;
+	width: 30%;
+	text-align: center;
+	display: none;
+}
+
+@media print {
+
+	.print_logo {
+		display: inline;
+	}
+
+	header {
+		display: none;
+	}
+
+	.recap_filter {
+		display: none;
+	}
+
+	.recap_bloc {
+		display: none;
+	}
+
+	.recap_bloc_grid {
+		display: none;
+	}
+
+	.recap_column6 {
+		display: none;
+	}
+
+	.recap_column1 {
+		display: none;
+	}
+
+	.recap_recap {
+		display: block;
+	}
+
+	.recap_hide {
+		display: none;
+	}
+}
+
+
+/* ==========================================================================
+------------------ PAGE RENDE LE MATERIEL  ----------------------
+========================================================================== */
+
+/* ------==Header=====---*/
+
+.rendre_header {
+	background-attachment: fixed;
+	background-image: url(../img/bg3.png);
+	background-position: top;
+	background-size: cover;
+	width: 100%;
+	min-height: 100vh;
+}
+
+.header_rendre {
+	position: sticky;
+}
+
+
+
+/* ------============ETAPE 1 =================---*/
+
+/* ------==Title=====---*/
+
+.main_title_rendre h2 {
+	margin-top: 3%;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.8em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.main_title_rendre h2:hover {
+	transform: scale(0.95);
+}
+
+/* --== NUMERO DE CARTE ETUDIANTE ===---*/
+
+.rendre_etape1 {
+	display: grid;
+	text-align: center;
+}
+
+.form_rendre {
+	width: 30%;
+	height: 100%;
+	margin-top: 2%;
+	margin-left: 35%;
+	background-color: rgba(1, 1, 1, 0.6);
+	box-shadow: 0px 0px 42px -4px rgba(0, 0, 0, 0.95);
+	transition: ease-in-out 300ms;
+}
+
+.form_rendre:hover {
+	transform: scale(1.05);
+}
+
+.title_rendre {
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Raleway';
+	font-weight: 700;
+	font-size: 1.5em;
+}
+
+.rendre_input {
+	display: block;
+	text-align: center;
+}
+
+.rendre_input input {
+	background-color: #ededed;
+	width: 60%;
+	height: 45px;
+	text-align: center;
+	font-family: 'Raleway';
+}
+
+.addtype_submit {
+	margin-top: 5%;
+}
+
+.addtype_submit_btn {
+	background-color: #ededed;
+	width: 40%;
+	height: 45px;
+	font-size: 0.9em;
+	align-content: center;
+	font-family: 'Raleway';
+}
+
+/* ------============ETAPE 2 =================---*/
+
+.camouflage {
+	display: block;
+}
+
+/* ------ */
+
+.main_title_rendre h3 {
+	margin-top: 3%;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.7em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 700;
+	transition: ease-in-out 300ms;
+	line-height: 1.5;
+}
+
+.main_title_rendre h3 span {
+ color: #50b65c;
+}
+
+
+.main_title_rendre h3:hover {
+	transform: scale(0.95);
+}
+
+/* ------==RENDRE LE MATERIEL EMPRUNTER PAR UN ETUDIANT =====---*/
+
+/*------ PARTIE TABLEAU -========*/
+
+.rendre_limiter {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.rendre_container-table100 {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.rendre_wrap-table100 {
+	padding-left: 12%;
+	padding-right: 12%;
+	padding-bottom: 1%;
+	width: 100%;
+}
+
+.rendre_table {
+	border-spacing: 1;
+	border-collapse: collapse;
+	background: white;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.rendre_table * {
+	position: relative;
+}
+
+.rendre_table td,
+.rendre_table th {
+	padding-left: 8px;
+}
+
+.rendre_table thead tr {
+	height: 7vh;
+	background: #50b65c;
+}
+
+.rendre_table tbody tr {
+	height: 5vh;
+}
+
+.rendre_table tbody tr:last-child {
+	border: 0;
+}
+
+.rendre_table td.l,
+.rendre_table th.l {
+	text-align: right;
+}
+
+.rendre_table td.c,
+.rendre_table table th.c {
+	text-align: center;
+}
+
+.rendre_table td.r,
+.rendre_table th.r {
+	text-align: center;
+}
+
+
+.rendre_table100-head th {
+	font-family: 'Raleway';
+	font-size: 0.9em;
+	color: #fff;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.rendre_tbody tr:nth-child(even) {
+	background-color: #f5f5f5;
+}
+
+.rendre_tbody tr {
+	font-family: 'Raleway';
+	font-size: 0.8em;
+	color: #575757;
+	line-height: 1.2;
+	font-weight: unset;
+}
+
+.rendre_tbody tr:hover {
+	color: #555555;
+	background-color: #ceffd7;
+	cursor: pointer;
+}
+
+.rendre_column1 {
+	width: 150px;
+	text-align: center;
+}
+
+.rendre_column2 {
+	width: 60px;
+	text-align: center;
+}
+
+.rendre_column3 {
+	width: 95px;
+	text-align: center;
+}
+
+.rendre_column4 {
+	width: 190px;
+	text-align: center;
+}
+
+.rendre_column5 {
+	width: 5px;
+	text-align: center;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  animation-name: slideUp;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*--- CheeckBox rendre ===*/
+
+.checkbox {
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox:before {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #f2f2f2;
+}
+
+.checkbox:after {
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.checkbox:checked:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  height: .5rem;
+  border-color: #009688;
+  border-top-style: none;
+  border-right-style: none;
+}
+
+/*--===*/
+
+.rendre_column6 {
+	width: 5px;
+	text-align: center;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  animation-name: slideUp;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*--- CheeckBox perdu ===*/
+
+.checkbox_perdu {
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox_perdu:before {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #f2f2f2;
+}
+
+.checkbox_perdu:after {
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.checkbox_perdu:checked:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  height: .5rem;
+  border-color: #e36649;
+  border-top-style: none;
+  border-right-style: none;
+}
+
+/*--===*/
+
+
+.rendre_tableau {
+	text-align: center;
+}
+
+.rendre_tab_titre {
+	display: block;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.3em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 700;
+	transition: ease-in-out 300ms;
+	line-height: 1.5;
+}
+
+.rendre_details {
+	color: #fff;
+	font-size: 1em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 500;
+	padding: 20px 200px;
+	border: 2px solid #fff;
+}
+
+.rendre_submit_btn{
+	margin-top: 3%;
+	margin-bottom: 3%;
+	width: 25%;
+	height: 40px;
+}
+
+/* ====================================================
+------------------ PAGES ANNEXES  ----------------------
+======================================================== */
+
+/*------ ERROR 404 -========*/
+
+  .page_error {
+            color: #888;
+            display: table;
+            font-family: sans-serif;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        .page_error_content {
+            margin-top: 35vh;
+        }
+
+        .page_error_content h1 {
+            color: #555;
+            font-size: 3em;
+            font-weight: 400;
+			font-family: 'Raleway';
+        }
+
+		.page_error_content p {
+            margin: 0 auto;
+            width: 280px;
+			font-size: 1em;
+        }
+
+
+/*------ AJOUTER UN TYPE -========*/
+
+/* --==Header=---*/
+
+.type_pageadd {
+	background-attachment: fixed;
+	background-image: url(../img/bgaddsupp.png);
+	background-position: top;
+	background-size: cover;
+	width: 100%;
+	min-height: 100vh;
+}
+
+.addtype_header {
+	position: sticky;
+}
+
+
+/*--- title -=====*/
+
+.addtype_title h2 {
+	margin-top: 3%;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 2em;
+	text-align: center;
+	font-family: 'Raleway';
+	font-weight: 800;
+	transition: ease-in-out 300ms;
+}
+
+.addtype_title h2:hover {
+	transform: scale(0.95);
+}
+
+.Addtype_grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	text-align: center;
+}
+
+.screen_form_addtype {
+	height: 100%;
+	margin-top: 4%;
+	margin-left: 35%;
+	background-color: rgba(1, 1, 1, 0.6);
+	box-shadow: 0px 0px 42px -4px rgba(0, 0, 0, 0.95);
+	transition: ease-in-out 300ms;
+}
+
+.screen_form_addtype:hover {
+	transform: scale(1.05);
+}
+
+.add_title_type {
+	display: block;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Raleway';
+	font-weight: 700;
+	font-size: 1.5em;
+}
+
+.addtype_input {
+	display: block;
+	text-align: center;
+}
+
+.addtype_input input {
+	background-color: #ededed;
+	width: 60%;
+	height: 45px;
+	text-align: center;
+	font-family: 'Raleway';
+}
+
+.addtype_submit {
+	margin-top: 5%;
+}
+
+.addtype_submit_btn {
+	background-color: #ededed;
+	width: 40%;
+	height: 45px;
+	font-size: 0.9em;
+	align-content: center;
+	font-family: 'Raleway';
+	margin-bottom: 15px;
+}
+
+/*------ SUPPRIMER UN TYPE -========*/
+
+
+.screen_form_supptype {
+	height: 100%;
+	margin-top: 4%;
+	margin-right: 35%;
+	margin-left: 5%;
+	background-color: rgba(1, 1, 1, 0.6);
+	box-shadow: 0px 0px 42px -4px rgba(0, 0, 0, 0.95);
+	transition: ease-in-out 300ms;
+}
+
+.screen_form_supptype:hover {
+	transform: scale(1.05);
+}
+
+.supp_title_type {
+	display: block;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Raleway';
+	font-weight: 700;
+	font-size: 1.5em;
+}
+
+.screen_form_supptype ul {
+	margin-top: 5px;
+	margin-bottom: 15px;
+	color: #1f1f1f;
+	color: #fff;
+	font-size: 1em;
+	font-family: 'Raleway';
+	align-content: center;
+	list-style-type: none;
+	padding-right: 5%;
+}
+
+.supptype_submit {
+	margin-top: 5%;
+}
+
+.supptype_submit_btn {
+	background-color: #ededed;
+	width: 40%;
+	height: 45px;
+	font-size: 0.9em;
+	align-content: center;
+	font-family: 'Raleway';
 }

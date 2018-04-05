@@ -9,12 +9,12 @@
     <!-- ===== SECTION HOME ===== -->
 
     <div class="home_content">
-        <a href="#">
+        <a href="#" data-pjax>
             <div class="left-one">
                 <h1> Section <br> élèves </h1>
             </div>
         </a>
-        <a href="{{ route('login') }}">
+        <a href="{{ route('login') }}" data-pjax>
             <div class="right-one">
                 <h1> Section <br> administrateur </h1>
             </div>

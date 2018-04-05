@@ -7,26 +7,26 @@
 
         <header class="header_admin">
             <div class="nav_gauche">
-                <a href="#">Rendre du matériel</a>
-                <a href="/reservation">Réserver du matériel</a>
-                <a href="#">Récap des reservations</a>
+                <a href="/retour" data-pjax>Rendre du matériel</a>
+                <a href="/pre_reservation" data-pjax>Réserver du matériel</a>
+                <a href="/recapitulatif" data-pjax>Récap des reservations</a>
             </div>
             <div>
-                <a href="{{ url('/home') }}">
+                <a href="{{ url('/home') }}" data-pjax>
                     <img src="img/logo.png" class="logo">
                 </a>
             </div>
             <div class="nav_droite">
-                <a href="/ajout">Ajouter matériel</a>
-                <a href="/admin">Administrer du materiel</a>
+                <a href="/ajout" data-pjax>Ajouter matériel</a>
+                <a href="/admin" data-pjax>Administrer du materiel</a>
 
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
+                   document.getElementById('logout-form').submit();" data-pjax>
 
                     {{ Auth::user()->name }}&nbsp;&nbsp;<i class="fa fa-sign-out"></i>
                 </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;" data-pjax>
                     @csrf
                 </form>
             </div>
@@ -36,7 +36,7 @@
     <section class="administrer_list">
     <!-- === FILTRES ==== -->
     <h2> <i class="fa fa-check-square"></i> &nbsp;&nbsp;&nbsp;&nbsp; Administration du matériel &nbsp;&nbsp;&nbsp;<i class="fa fa-check-square"></i></h2>
-    <form action="admin" method="get">
+    <form action="admin" method="get" data-pjax>
         <div class="administrer_filter">
                 <ul>
                     <li> Type de matériel :<br/>
@@ -69,7 +69,7 @@
                         </button>
                     </li>
                     <li class="create_type">
-                        <a href="/ajout_type"><u>Votre type n'est pas présent ?<br/> creer le !</u></a>&nbsp;<!--<a href="/supp_type">supprimer un type x</a>-->
+                        <a href="/type" data-pjax><u>Un problème avec le type ?<br/> créer / supprimer le !</u></a>&nbsp;<!--<a href="/supp_type">supprimer un type x</a>-->
                     </li>
                 </ul>
         </div>
@@ -126,17 +126,21 @@
                                                 <td class="column5">{{$m->note}}</td>
                                                 <td class="column6">
                                                     @if($m->etat == "Réservé")
-                                                        <a class="open-event" title="Reserver par Utilisateur1">{{$m->etat}}</a>
-                                                        @else
+                                                        @foreach($reservations as $r)
+                                                            @if($r->id == $m->reservation_id)
+                                                                <a class="open-event" title="Reservé par {{$r->nom_etudiant}} {{$r->prenom_etudiant}}">{{$m->etat}}</a>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
                                                         {{$m->etat}}
                                                     @endif
                                                 </td>
                                                 <td class="column7" data-id="{{$m->id}}">
                                                     <i class="fa fa-trash-o"></i>
                                                     <div class="page_slider leA" style='display:none;'>
-                                                        <span> <i class="fa fa-trash-o"></i> &nbsp;&nbsp;&nbsp;&nbsp; Voulez vous supprimer ce matériel ? &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash-o"></i> </span><br/>
+                                                        <span class="slider_title"> <i class="fa fa-trash-o"></i> &nbsp;&nbsp;&nbsp;&nbsp; Voulez vous supprimer ce matériel ? &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash-o"></i> </span><br/>
                                                         <div>
-                                                            <a id="reserv_slider_no" class="reserv_slider_no" style="color:#000; background-color: red;"><i class="fa fa-times"></i>Non</a>
+                                                            <a id="reserv_slider_no" class="reserv_slider_no" style="color:#000; background-color: red;" data-pjax><i class="fa fa-times"></i>Non</a>
                                                         </div>
                                                         <div class="reserv_slider_yes">
                                                         </div>

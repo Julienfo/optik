@@ -62,9 +62,42 @@ $(document).ready(function () {
 		//----- SUPPRIMER UN INPUT
 		$('#moins').click(function () {
 			$('.input_reserve').last().remove();
+			$('.input_reserve').last().focus();
 		});
 				
 	});
+
+    //----- RENDRE MATERIEL GENERER UN INPUT
+    $(function () {
+
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                var entrer = $('<input>');
+                entrer.attr('type', 'text');
+                entrer.attr('class', 'input_rendu');
+                entrer.attr('name', 'ref_rendu[]');
+                entrer.attr('placeholder', 'Référence matériel à rendre');
+                entrer.appendTo('.rendu_bloc_input').focus();
+            }
+        });
+
+
+        $('#plus_rendu').click(function () {
+            var champ = $('<input>');
+            champ.attr('type', 'text');
+            champ.attr('class', 'input_rendu');
+            champ.attr('name', 'ref_rendu[]');
+            champ.attr('placeholder', 'Référence matériel à rendre');
+            champ.appendTo('.rendu_bloc_input').focus();
+        });
+
+        //----- SUPPRIMER UN INPUT
+        $('#moins_rendu').click(function () {
+            $('.input_rendu').last().remove();
+            $('.input_rendu').last().focus();
+        });
+
+    });
 
     //----- RESERVATION AJOUT CADDIE INPUT
     $(function () {
@@ -75,19 +108,19 @@ $(document).ready(function () {
         });
 
     });
-	
-	//----- SLIDE RESERVATION
-	$(function () {
-		
-	$('.reserv_valid_slide').click(function() {
-	$( '.page_slider').slideToggle();
-		});
-		
-	$('#reserv_slider_no').click(function() {
-	$( '.page_slider').slideToggle("slow");
-	});
-		
-});
+
+    //----- SLIDE RESERVATION
+    $(function () {
+
+        $('.reserv_valid_slide').click(function() {
+            $( '.page_slider').slideToggle();
+        });
+
+        $('#reserv_slider_no').click(function() {
+            $( '.page_slider').slideToggle("slow");
+        });
+
+    });
 	
 	//----- SLIDE ADMINISTRER
 	$(function () {
@@ -106,8 +139,46 @@ $(document).ready(function () {
 	$( '.page_slider').slideToggle("slow");
 
 	});
-		
-});
+
+    });
+
+	/*====== CHECKBOX =======*/
+
+    $('.checkbox_perdu').click(function () {
+        var checkbox_perdu = $(this).is(':checked');
+        if(checkbox_perdu){
+            $(this).parent().parent().prev().children().children().prop('checked', false);
+        }
+    });
+
+    $('.checkbox').click(function () {
+        var checkbox = $(this).is(':checked');
+        if(checkbox){
+            $(this).parent().parent().next().children().children().prop('checked', false);
+        }
+    });
+
+    /*========  SLIDE GESTION CARTE ==========*/
+
+
+    $(function () {
+
+        $('.column7_gest').click(function() {
+            $( '.page_slider').slideToggle();
+
+            var id = $(this).attr('data-id');
+
+            $('.gest_slider_yes').html("<a href='/remove_pers/"+id+"' id='gest_slider_yes' style='color:#000; background-color: lawngreen;' ><i class='fa fa-check'></i>Oui</a>");
+
+        });
+
+        $('.page_slider_no').click(function() {
+            $( '.page_slider').slideToggle("slow");
+
+        });
+
+    });
+
 
     toastr.options = {
         "closeButton": false,
