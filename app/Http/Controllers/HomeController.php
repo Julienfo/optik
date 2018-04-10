@@ -37,6 +37,55 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function eleve(){
+
+        $type_select = request('type_select');
+        $types = Type::all();
+
+        $qualite_select = request('qualite_select');
+        $qualite = Materiel::distinct()->select('qualite')->get();
+
+
+        if($type_select == null && $qualite_select == null){
+
+            $materiel = Materiel::where('etat', 'Disponible')->get();
+
+        }else{
+            $materiel = Materiel::where('etat', 'Disponible')->where('type_id', $type_select)
+                ->orwhere('qualite', $qualite_select)
+                ->get();
+        }
+
+        if($type_select != null && $qualite_select != null){
+
+            $materiel = Materiel::where('etat', 'Disponible')->where('type_id', $type_select)
+                ->where('qualite', $qualite_select)
+                ->get();
+
+        }
+
+        if($type_select == null && $qualite_select != null){
+
+            $materiel = Materiel::where('etat', 'Disponible')->where('qualite', $qualite_select)
+                ->get();
+
+        }
+
+        if($type_select != null && $qualite_select == null){
+
+            $materiel = Materiel::where('etat', 'Disponible')->where('type_id', $type_select)
+                ->get();
+
+        }
+
+        return view('eleve', [
+            'materiel' => $materiel,
+            'types' => $types,
+            'qualite' => $qualite
+        ]);
+    }
+
+
     public function ajout()
     {
         $types = Type::all();
@@ -607,5 +656,20 @@ class HomeController extends Controller
             Reservation::where('id', $id)->delete();
             return back()->with('toastr', ['statut' => 'success', 'message' => 'Carte supprimée.']);
         }
+    }
+
+    public function print($id){
+
+        $reservation = Reservation::where('id', $id)->first();
+
+        if(!$reservation){
+            return redirect('/recapitulatif')->with('toastr', ['statut' => 'error', 'message' => 'Il y a eu un problème #404.']);
+        }
+
+
+        $materiel = Materiel::where('reservation_id', $id)->get();
+
+        return view('print', ['id' => $id, 'reservation' => $reservation, 'materiel' => $materiel]);
+
     }
 }

@@ -137,7 +137,7 @@
                                                 </td>
                                                 <td class="column7" data-id="{{$m->id}}">
                                                     <i class="fa fa-trash-o"></i>
-                                                    <div class="page_slider leA" style='display:none;'>
+                                                    <div class="page_slider leA" style='display:none; opacity: 0.1'>
                                                         <span class="slider_title"> <i class="fa fa-trash-o"></i> &nbsp;&nbsp;&nbsp;&nbsp; Voulez vous supprimer ce matériel ? &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash-o"></i> </span><br/>
                                                         <div>
                                                             <a id="reserv_slider_no" class="reserv_slider_no" style="color:#000; background-color: red;" data-pjax><i class="fa fa-times"></i>Non</a>

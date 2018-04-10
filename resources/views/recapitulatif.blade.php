@@ -84,7 +84,7 @@
                                     <tr><td>Aucune réservation réalisée.</td></tr>
                                 @else
                                 @foreach($reservation as $r)
-                                        <tr>
+                                        <tr id="{{$r->id}}">
                                             <td class="recap_column1">{{$r->nom_etudiant}}&nbsp;{{$r->prenom_etudiant}}</td>
                                             <td class="recap_column2">{{$r->carte_etudiant}}</td>
                                             <td class="recap_column3"> {{$r->date_debut}} </td>
@@ -103,7 +103,7 @@
                                             @else
                                                 <td class="recap_column5"> {{$r->details}} </td>
                                             @endif
-                                            <td class="recap_column7"> <i class="fa fa-print fa-2x"></i> </td>
+                                            <td class="recap_column7" style="color: #000;"> <a href="/print/{{$r->id}}"> <i class="fa fa-print fa-2x"></i></a> </td>
                                         </tr>
                                 @endforeach
                                 @endif

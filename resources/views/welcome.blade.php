@@ -9,7 +9,7 @@
     <!-- ===== SECTION HOME ===== -->
 
     <div class="home_content">
-        <a href="#" data-pjax>
+        <a href="/eleve" data-pjax>
             <div class="left-one">
                 <h1> Section <br> élèves </h1>
             </div>

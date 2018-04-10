@@ -1480,10 +1480,19 @@ tbody tr:hover {
 	display: none;
 }
 
+
+
+.print_column1 {
+	display: block;
+	width: 100px;
+	margin: 150px auto;
+	color: red;
+}
+/*
 @media print {
 
 	.print_logo {
-		display: inline;
+		display: none;
 	}
 
 	header {
@@ -1511,13 +1520,13 @@ tbody tr:hover {
 	}
 
 	.recap_recap {
-		display: block;
+		display: none;
 	}
 
 	.recap_hide {
 		display: none;
 	}
-}
+}*/
 
 
 /* ==========================================================================

@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@welcome');
 
+Route::get('/eleve', 'HomeController@eleve');
+
 Route::get('/home', 'HomeController@home')->middleware('auth');
 
 Route::get('/ajout', 'HomeController@ajout')->middleware('auth');
@@ -51,3 +53,5 @@ Route::post('/ajout_carte_etu', 'HomeController@ajout_carte_etu')->middleware('a
 
 Route::get('/gestion', 'HomeController@gestion')->middleware('auth');
 Route::get('/remove_pers/{id}', 'HomeController@remove_pers')->where('id', '[0-9]+')->middleware('auth');
+
+Route::get('/print/{id}', 'HomeController@print')->where('id', '[0-9]+')->middleware('auth');
